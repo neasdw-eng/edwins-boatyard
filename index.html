@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edwin's Boat Yard — Man-O-War Cay, Bahamas</title>
-<meta name="description" content="A full-service boat yard on Man-O-War Cay, serving power and sail boaters in The Abacos, Bahamas.">
+<meta name="description" content="A full-service boat yard on Man-O-War Cay in The Abacos, Bahamas — serving power and sail boaters with haul-outs, long-term storage, emergency repairs, and short-notice work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,7 +33,10 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+  overflow-x: hidden;
 }
+
+img { display: block; max-width: 100%; height: auto; }
 
 /* ── NAV ── */
 .nav {
@@ -98,7 +101,6 @@ body {
   padding: 0.55rem 1.3rem;
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 2px;
-  transition: all 0.3s !important;
 }
 .nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--navy) !important; }
 
@@ -129,21 +131,20 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.4) 40%, rgba(10,22,40,0.85) 100%),
-    radial-gradient(ellipse at 30% 30%, rgba(34,211,238,0.18) 0%, transparent 60%),
-    linear-gradient(135deg, #0a1628 0%, #143049 50%, #1e4565 100%);
+  background-image:
+    linear-gradient(180deg, rgba(10,22,40,0.5) 0%, rgba(10,22,40,0.3) 40%, rgba(10,22,40,0.85) 100%),
+    url('assets/images/banner1.jpg');
+  background-size: cover;
+  background-position: center;
   z-index: 0;
+  filter: saturate(1.05);
 }
 
-/* Subtle horizon line */
 .hero-bg::after {
   content: '';
   position: absolute;
-  bottom: 35%;
-  left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212,168,83,0.25) 50%, transparent 100%);
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(34,211,238,0.08) 0%, transparent 60%);
 }
 
 .hero-content {
@@ -181,6 +182,7 @@ body {
   letter-spacing: -0.02em;
   margin-bottom: 2rem;
   max-width: 850px;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3);
 }
 
 .hero h1 em {
@@ -195,7 +197,7 @@ body {
   gap: 0.7rem;
   padding: 1rem 2rem;
   border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
   color: var(--white);
   text-decoration: none;
@@ -205,12 +207,7 @@ body {
   text-transform: uppercase;
   transition: all 0.3s;
 }
-.hero-cta:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--navy);
-}
-
+.hero-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
 .hero-cta svg { transition: transform 0.3s; }
 .hero-cta:hover svg { transform: translateX(4px); }
 
@@ -225,7 +222,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.7);
   z-index: 2;
 }
 .hero-meta span::before {
@@ -236,7 +233,6 @@ body {
 
 /* ── SECTIONS ── */
 section { padding: 7rem 3rem; }
-
 .container { max-width: 1200px; margin: 0 auto; }
 
 .section-label {
@@ -252,15 +248,13 @@ section { padding: 7rem 3rem; }
 }
 .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
 
-/* ── INTRO ── */
-.intro {
-  background: var(--bone-soft);
-}
+/* ── INTRO / ABOUT ── */
+.intro { background: var(--bone-soft); }
 .intro-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: 5rem;
-  align-items: start;
+  align-items: center;
 }
 .intro-grid h2 {
   font-family: 'Playfair Display', serif;
@@ -269,6 +263,7 @@ section { padding: 7rem 3rem; }
   line-height: 1.15;
   letter-spacing: -0.015em;
   color: var(--ink);
+  margin-bottom: 1.5rem;
 }
 .intro-grid h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
 .intro-text p {
@@ -278,6 +273,22 @@ section { padding: 7rem 3rem; }
   margin-bottom: 1.4rem;
 }
 .intro-text p:last-child { margin-bottom: 0; }
+.intro-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 0.8rem;
+}
+.intro-photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.intro-photos img:first-child {
+  grid-row: span 2;
+  height: 100%;
+}
 
 /* ── SERVICES ── */
 .services {
@@ -296,33 +307,49 @@ section { padding: 7rem 3rem; }
   letter-spacing: -0.015em;
   line-height: 1.15;
   color: var(--ink);
+  margin-top: 0.5rem;
 }
 .svc-head h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+
 .svc-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
 }
 .svc {
-  padding: 2.5rem 0;
+  padding: 3rem 0;
   border-top: 1px solid var(--rule);
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 130px 1fr;
+  gap: 2rem;
   align-items: start;
 }
 .svc:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
 .svc:nth-child(odd) { padding-right: 3rem; border-right: 1px solid var(--rule); }
 .svc:nth-child(even) { padding-left: 3rem; }
 
+.svc-diagram {
+  width: 130px;
+  height: 130px;
+  background: var(--bone-soft);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.svc-diagram svg { width: 80%; height: 80%; }
+
 .svc-num {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--gold);
   font-weight: 400;
   letter-spacing: 0.05em;
-  padding-top: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 .svc h3 {
   font-family: 'Playfair Display', serif;
@@ -350,10 +377,11 @@ section { padding: 7rem 3rem; }
 .photo-band-bg {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(10,22,40,0.4) 0%, rgba(10,22,40,0.7) 100%),
-    radial-gradient(ellipse at 40% 60%, rgba(34,211,238,0.18) 0%, transparent 60%),
-    linear-gradient(135deg, #143049 0%, #0a1628 100%);
+  background-image:
+    linear-gradient(180deg, rgba(10,22,40,0.35) 0%, rgba(10,22,40,0.7) 100%),
+    url('assets/images/_MG_1956.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .photo-band-content {
   position: relative;
@@ -373,27 +401,257 @@ section { padding: 7rem 3rem; }
   line-height: 1.4;
   color: var(--white);
   max-width: 700px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
-.photo-band-content blockquote::before {
-  content: '"'; color: var(--gold);
-  font-size: 1.5em; line-height: 0; vertical-align: -0.4em;
+.photo-band-content blockquote::before { content: '"'; color: var(--gold); font-size: 1.5em; line-height: 0; vertical-align: -0.4em; }
+.photo-band-content blockquote::after { content: '"'; color: var(--gold); font-size: 1.5em; line-height: 0; vertical-align: -0.4em; }
+
+/* ── THE YARD GALLERY ── */
+.yard {
+  background: var(--bone-soft);
 }
-.photo-band-content blockquote::after {
-  content: '"'; color: var(--gold);
-  font-size: 1.5em; line-height: 0; vertical-align: -0.4em;
+.yard-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: end;
 }
+.yard-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-top: 0.5rem;
+}
+.yard-head h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.yard-head p { font-size: 1rem; color: var(--slate); line-height: 1.7; }
+
+.yard-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 0.8rem;
+}
+.yard-grid figure {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0;
+}
+.yard-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.yard-grid figure:hover img { transform: scale(1.04); }
+.yard-grid figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,22,40,0.85) 100%);
+  color: var(--white);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.yard-grid figure:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+.yard-grid figure:nth-child(2) { grid-column: span 3; }
+.yard-grid figure:nth-child(3) { grid-column: span 1; }
+.yard-grid figure:nth-child(4) { grid-column: span 1; }
+.yard-grid figure:nth-child(5) { grid-column: span 1; }
 
 /* ── LOCATION ── */
 .location {
-  background: var(--bone-soft);
+  background: var(--bone);
+  border-top: 1px solid var(--rule);
 }
-.loc-grid {
+.loc-head {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.loc-head .section-label { justify-content: center; }
+.loc-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.loc-head h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.loc-head p { font-size: 1rem; color: var(--slate); line-height: 1.7; }
+
+.loc-coords {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--bone-soft);
+  border: 1px solid var(--rule);
+  border-radius: 50px;
+  font-family: 'Inter', monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+.loc-coords::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.loc-map-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.loc-map {
+  aspect-ratio: 4/3;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: #0d2847;
+  position: relative;
+}
+.loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.loc-map-link {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.8rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+.loc-map-link:hover { background: var(--gold); color: var(--navy); }
+.loc-map-img {
+  aspect-ratio: 4/3;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--rule);
+}
+.loc-map-img img { width: 100%; height: 100%; object-fit: cover; }
+.loc-map-img-cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(180deg, transparent, rgba(10,22,40,0.85));
+  color: var(--white);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.gettinghere {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.gettinghere-card {
+  padding: 2.5rem;
+  background: var(--bone-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.gettinghere-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.gettinghere-card h3 svg { width: 26px; height: 26px; color: var(--gold); flex-shrink: 0; }
+.gettinghere-card ol {
+  list-style: none;
+  counter-reset: step;
+}
+.gettinghere-card ol li {
+  counter-increment: step;
+  padding: 0.7rem 0 0.7rem 2.6rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--slate);
+  border-bottom: 1px dashed var(--rule);
+}
+.gettinghere-card ol li:last-child { border-bottom: none; }
+.gettinghere-card ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 28px;
+  height: 28px;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.gettinghere-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--slate);
+  margin-bottom: 1rem;
+}
+.gettinghere-card p:last-child { margin-bottom: 0; }
+.gettinghere-card a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.gettinghere-card a:hover { color: var(--gold); }
+
+/* ── ON THE CAY ── */
+.cay {
+  background: var(--bone-soft);
+  border-top: 1px solid var(--rule);
+}
+.cay-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
   align-items: center;
 }
-.loc-grid h2 {
+.cay-grid h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 700;
@@ -402,71 +660,71 @@ section { padding: 7rem 3rem; }
   color: var(--ink);
   margin-bottom: 1.5rem;
 }
-.loc-grid h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
-.loc-grid p {
+.cay-grid h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.cay-grid p {
   font-size: 1.02rem;
   line-height: 1.8;
   color: var(--slate);
+  margin-bottom: 1.5rem;
 }
-.loc-card {
-  aspect-ratio: 4/3;
-  background:
-    linear-gradient(180deg, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.6) 100%),
-    linear-gradient(135deg, #143049 0%, #0a1628 60%, #1e4565 100%);
-  border-radius: 4px;
+.cay-photo {
   position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
   overflow: hidden;
-  display: flex;
-  align-items: end;
-  padding: 2rem;
-  color: var(--white);
 }
-.loc-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.4;
-}
-.loc-card-text {
-  position: relative;
-  z-index: 1;
-}
-.loc-card-text strong {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-.loc-card-text span {
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-}
+.cay-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ── CONTACT CTA ── */
+.cay-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.cay-links a {
+  font-size: 0.88rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--rule);
+  transition: color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cay-links a::after {
+  content: '↗';
+  color: var(--gold);
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cay-links a:hover { color: var(--gold); }
+.cay-links a:hover::after { opacity: 1; }
+
+/* ── CONTACT ── */
 .contact {
   background: var(--navy);
   color: var(--white);
   text-align: center;
   padding: 8rem 3rem;
 }
+.contact .section-label { justify-content: center; color: rgba(255,255,255,0.5); }
+.contact .section-label::before { background: var(--gold); }
 .contact h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.1;
-  margin-bottom: 1.2rem;
+  margin: 0.5rem 0 1.2rem;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 .contact h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
-.contact p {
+.contact > p {
   font-size: 1rem;
   color: rgba(255,255,255,0.6);
   max-width: 480px;
@@ -487,10 +745,7 @@ section { padding: 7rem 3rem; }
   text-transform: uppercase;
   transition: all 0.3s;
 }
-.contact-cta:hover {
-  background: var(--white);
-  transform: translateY(-2px);
-}
+.contact-cta:hover { background: var(--white); transform: translateY(-2px); }
 
 /* ── FOOTER ── */
 footer {
@@ -508,11 +763,7 @@ footer {
   flex-wrap: wrap;
   gap: 1.5rem;
 }
-.foot-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
+.foot-brand { display: flex; align-items: center; gap: 0.85rem; }
 .foot-brand .nav-logo-icon { width: 36px; height: 36px; }
 .foot-brand .nav-logo-text { font-size: 1.1rem; }
 .foot-meta {
@@ -520,7 +771,7 @@ footer {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-.foot-meta span:not(:last-child)::after { content: '  ·  '; color: var(--gold); margin: 0 0.5rem; }
+.foot-meta span:not(:last-child)::after { content: ' · '; color: var(--gold); margin: 0 0.5rem; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -546,24 +797,36 @@ footer {
   .hero-content { padding: 0 1.5rem; }
   .hero-meta { left: 1.5rem; right: 1.5rem; bottom: 1.5rem; flex-direction: column; align-items: start; gap: 0.4rem; }
 
-  .intro-grid, .loc-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .intro-grid, .yard-head, .loc-map-wrap, .gettinghere, .cay-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .intro-photos { grid-template-rows: 160px 160px; }
+
   .svc-list { grid-template-columns: 1fr; }
-  .svc { grid-template-columns: 1fr; gap: 0.8rem; padding: 2rem 0; border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  .svc { grid-template-columns: 80px 1fr; gap: 1.2rem; padding: 2rem 0; border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  .svc-diagram { width: 80px; height: 80px; }
   .svc:nth-last-child(-n+2) { border-bottom: none; }
   .svc:last-child { border-bottom: 1px solid var(--rule); }
+
+  .yard-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+  .yard-grid figure:nth-child(1) { grid-column: span 2; grid-row: span 1; height: 240px; }
+  .yard-grid figure:nth-child(2) { grid-column: span 2; }
+  .yard-grid figure:nth-child(n) { grid-column: span 1; }
 
   .photo-band-content { padding: 0 1.5rem 2.5rem; }
   .contact { padding: 5rem 1.5rem; }
   footer { padding: 2.5rem 1.5rem 1.5rem; }
   .foot-inner { flex-direction: column; text-align: center; }
+  .cay-links { grid-template-columns: 1fr; }
 }
+
+/* Reusable compass logo */
+.compass-svg circle:nth-child(1) { stroke: currentColor; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo" aria-label="Edwin's Boat Yard, home">
+  <a href="#" class="nav-logo" aria-label="Edwin's Boat Yard">
     <div class="nav-logo-icon">
       <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="35" cy="35" r="32" stroke="#ffffff" stroke-width="2" fill="none"/>
@@ -582,7 +845,7 @@ footer {
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#yard">The Yard</a></li>
     <li><a href="#location">Location</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
@@ -604,21 +867,26 @@ footer {
   </div>
   <div class="hero-meta">
     <span>Power &amp; Sail</span>
-    <span>Edwin's Boat Yard</span>
+    <span>26.596° N · 77.007° W</span>
   </div>
 </section>
 
-<!-- INTRO / ABOUT -->
+<!-- INTRO -->
 <section class="intro" id="about">
   <div class="container">
     <div class="intro-grid">
       <div>
         <div class="section-label">The Yard</div>
         <h2>Boaters come back, <em>year after year.</em></h2>
+        <div class="intro-text">
+          <p>Edwin's Boat Yard is a full-service facility on Man-O-War Cay in The Abacos, Bahamas, serving power and sail boaters.</p>
+          <p>Whether for periodic haul-outs or long-term storage, we pride ourselves on repeat business with customers coming back year after year. We also accommodate emergency repair and short-notice work in a timely and efficient manner.</p>
+        </div>
       </div>
-      <div class="intro-text">
-        <p>Edwin's Boat Yard is a full-service facility on Man-O-War Cay in The Abacos, Bahamas, serving power and sail boaters.</p>
-        <p>Most of our work is repeat business — owners returning season after season. When something needs doing on short notice, we handle it in a timely and efficient manner.</p>
+      <div class="intro-photos">
+        <img src="assets/images/_MG_2001.jpg" alt="Sailboat hauled out at Edwin's Boat Yard" loading="lazy">
+        <img src="assets/images/_MG_1955.jpg" alt="Boat on the marine railway" loading="lazy">
+        <img src="assets/images/_MG_2018.jpg" alt="Mechanical repair work in progress" loading="lazy">
       </div>
     </div>
   </div>
@@ -632,39 +900,131 @@ footer {
       <h2>What we do, <em>and how we do it.</em></h2>
     </div>
     <div class="svc-list">
+
+      <!-- Periodic Haul-Outs -->
       <div class="svc">
-        <div class="svc-num">i.</div>
+        <div class="svc-diagram">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Water -->
+            <path d="M5 78 Q15 75 25 78 T45 78 T65 78 T85 78 T95 78" stroke="#22d3ee" stroke-width="1.2"/>
+            <path d="M5 84 Q15 81 25 84 T45 84 T65 84 T85 84 T95 84" stroke="#22d3ee" stroke-width="1" opacity="0.6"/>
+            <!-- Rails (marine railway) -->
+            <line x1="20" y1="92" x2="50" y2="55"/>
+            <line x1="80" y1="92" x2="50" y2="55"/>
+            <!-- Cradle -->
+            <rect x="38" y="50" width="24" height="6" fill="#d4a853" stroke="#0a1628"/>
+            <line x1="42" y1="56" x2="42" y2="62"/>
+            <line x1="58" y1="56" x2="58" y2="62"/>
+            <!-- Boat hull -->
+            <path d="M30 42 L70 42 Q72 50 50 50 Q28 50 30 42 Z" fill="#faf6ee"/>
+            <!-- Mast -->
+            <line x1="50" y1="42" x2="50" y2="14" stroke-width="1.2"/>
+            <path d="M50 18 L62 38 L50 35 Z" fill="#d4a853" stroke-width="1.2"/>
+            <!-- Cable / hauling line -->
+            <line x1="50" y1="14" x2="92" y2="92" stroke-dasharray="2 3" stroke-width="0.8" opacity="0.5"/>
+          </svg>
+        </div>
         <div>
+          <div class="svc-num">i.</div>
           <h3>Periodic Haul-Outs</h3>
-          <p>Scheduled haul-outs for power and sail boaters maintaining their vessels through the season.</p>
+          <p>Scheduled haul-outs for owners maintaining their vessels through the season — power and sail.</p>
         </div>
       </div>
+
+      <!-- Long-Term Storage -->
       <div class="svc">
-        <div class="svc-num">ii.</div>
+        <div class="svc-diagram">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Storage shed -->
+            <path d="M12 45 L50 22 L88 45 L88 82 L12 82 Z" fill="#faf6ee"/>
+            <!-- Door -->
+            <rect x="40" y="55" width="20" height="27" fill="#bone" stroke="#0a1628"/>
+            <line x1="50" y1="55" x2="50" y2="82" stroke-width="0.8"/>
+            <!-- Roof line -->
+            <line x1="12" y1="45" x2="88" y2="45"/>
+            <!-- Boat outline inside (peeking through) -->
+            <path d="M28 70 L72 70 Q73 76 50 76 Q27 76 28 70 Z" fill="#d4a853" opacity="0.4" stroke="none"/>
+            <!-- Anchor symbol on door -->
+            <circle cx="50" cy="64" r="2" fill="#d4a853" stroke="none"/>
+            <line x1="50" y1="66" x2="50" y2="72" stroke="#d4a853" stroke-width="1"/>
+            <path d="M46 70 Q50 74 54 70" stroke="#d4a853" stroke-width="1"/>
+            <!-- Ground -->
+            <line x1="6" y1="82" x2="94" y2="82" stroke-width="1"/>
+            <line x1="6" y1="86" x2="94" y2="86" stroke-width="0.6" opacity="0.5"/>
+          </svg>
+        </div>
         <div>
+          <div class="svc-num">ii.</div>
           <h3>Long-Term Storage</h3>
-          <p>Storage for boaters who keep their vessels with us between seasons or during longer periods away.</p>
+          <p>Storage for boaters keeping their vessels with us between seasons or during longer periods away.</p>
         </div>
       </div>
+
+      <!-- Emergency Repairs -->
       <div class="svc">
-        <div class="svc-num">iii.</div>
+        <div class="svc-diagram">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Lifebuoy / preserver -->
+            <circle cx="50" cy="50" r="30"/>
+            <circle cx="50" cy="50" r="14" fill="#faf6ee"/>
+            <!-- Stripes (4 segments of red on lifebuoy — using gold) -->
+            <path d="M50 20 A30 30 0 0 1 80 50 L66 50 A16 16 0 0 0 50 34 Z" fill="#d4a853" stroke="none"/>
+            <path d="M50 80 A30 30 0 0 1 20 50 L34 50 A16 16 0 0 0 50 66 Z" fill="#d4a853" stroke="none"/>
+            <!-- Outer ring -->
+            <circle cx="50" cy="50" r="30" fill="none"/>
+            <circle cx="50" cy="50" r="14" fill="none"/>
+            <!-- Rope ties -->
+            <line x1="50" y1="20" x2="50" y2="14" stroke-width="1"/>
+            <line x1="80" y1="50" x2="86" y2="50" stroke-width="1"/>
+            <line x1="50" y1="80" x2="50" y2="86" stroke-width="1"/>
+            <line x1="20" y1="50" x2="14" y2="50" stroke-width="1"/>
+          </svg>
+        </div>
         <div>
+          <div class="svc-num">iii.</div>
           <h3>Emergency Repairs</h3>
-          <p>When something needs immediate attention, we step in. Repairs handled with the urgency they require.</p>
+          <p>When something needs attention right away, we step in and handle it.</p>
         </div>
       </div>
+
+      <!-- Short-Notice Work -->
       <div class="svc">
-        <div class="svc-num">iv.</div>
+        <div class="svc-diagram">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Stopwatch / clock -->
+            <circle cx="50" cy="56" r="28" fill="#faf6ee"/>
+            <!-- Top button -->
+            <rect x="46" y="20" width="8" height="6" rx="1"/>
+            <line x1="50" y1="26" x2="50" y2="30" stroke-width="2"/>
+            <!-- Tick marks (12, 3, 6, 9) -->
+            <line x1="50" y1="30" x2="50" y2="34" stroke-width="1.2"/>
+            <line x1="76" y1="56" x2="72" y2="56" stroke-width="1.2"/>
+            <line x1="50" y1="84" x2="50" y2="80" stroke-width="1.2"/>
+            <line x1="24" y1="56" x2="28" y2="56" stroke-width="1.2"/>
+            <!-- Hands pointing to 1 (60-min) and 12 (hr) -->
+            <line x1="50" y1="56" x2="50" y2="36" stroke="#0a1628" stroke-width="1.8"/>
+            <line x1="50" y1="56" x2="66" y2="44" stroke="#d4a853" stroke-width="2"/>
+            <!-- Center dot -->
+            <circle cx="50" cy="56" r="2.5" fill="#d4a853" stroke="none"/>
+            <!-- Speed lines -->
+            <line x1="14" y1="38" x2="22" y2="42" stroke-width="1" opacity="0.5"/>
+            <line x1="10" y1="46" x2="18" y2="48" stroke-width="1" opacity="0.5"/>
+            <line x1="86" y1="38" x2="78" y2="42" stroke-width="1" opacity="0.5"/>
+            <line x1="90" y1="46" x2="82" y2="48" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
         <div>
+          <div class="svc-num">iv.</div>
           <h3>Short-Notice Work</h3>
-          <p>Unscheduled jobs, taken on as needed, completed in a timely and efficient manner.</p>
+          <p>Unscheduled jobs taken on as needed and completed in a timely and efficient manner.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- PHOTO BAND / QUOTE -->
+<!-- PHOTO BAND -->
 <section class="photo-band">
   <div class="photo-band-bg"></div>
   <div class="photo-band-content">
@@ -672,20 +1032,112 @@ footer {
   </div>
 </section>
 
+<!-- THE YARD -->
+<section class="yard" id="yard">
+  <div class="container">
+    <div class="yard-head">
+      <div>
+        <div class="section-label">The Yard</div>
+        <h2>Around the <em>boat yard.</em></h2>
+      </div>
+      <p>The yard, the railway, and a glimpse of the work that happens here — from haul-outs to canvas to mechanical repairs.</p>
+    </div>
+    <div class="yard-grid">
+      <figure>
+        <img src="assets/images/_MG_1956.jpg" alt="Boats on the marine railway at Edwin's Boat Yard" loading="lazy">
+        <figcaption>The Marine Railway</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/_MG_1962.jpg" alt="Yard equipment" loading="lazy">
+        <figcaption>Equipment</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/_MG_1449.jpg" alt="Marine parts and supplies" loading="lazy">
+        <figcaption>Supplies</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/117-1780_IMG.jpg" alt="Canvas and sail work" loading="lazy">
+        <figcaption>Canvas Work</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/_MG_2838.jpg" alt="Traditional Bahamian boat" loading="lazy">
+        <figcaption>Traditional Craft</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- LOCATION -->
 <section class="location" id="location">
   <div class="container">
-    <div class="loc-grid">
-      <div>
-        <div class="section-label">Location</div>
-        <h2>On the western shore of <em>Man-O-War Cay.</em></h2>
-        <p>The yard sits on Man-O-War Cay in The Abacos, Bahamas — a small island long associated with traditional boat building.</p>
+    <div class="loc-head">
+      <div class="section-label">Location</div>
+      <h2>On Man-O-War Cay <em>in The Abacos.</em></h2>
+      <p>The yard sits on Man-O-War Cay — a short ferry ride from Marsh Harbour and the airport.</p>
+      <div class="loc-coords">26.596638° N · 77.007582° W</div>
+    </div>
+
+    <div class="loc-map-wrap">
+      <div class="loc-map">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-77.018%2C26.587%2C-76.997%2C26.606&amp;layer=mapnik&amp;marker=26.596638%2C-77.007582"
+          loading="lazy"
+          title="Edwin's Boat Yard map"
+          allowfullscreen></iframe>
+        <a href="https://www.openstreetmap.org/?mlat=26.596638&amp;mlon=-77.007582#map=16/26.596638/-77.007582" target="_blank" rel="noopener" class="loc-map-link">View larger map ↗</a>
       </div>
-      <div class="loc-card">
-        <div class="loc-card-text">
-          <strong>Man-O-War Cay</strong>
-          <span>The Abacos · Bahamas</span>
+      <div class="loc-map-img">
+        <img src="assets/images/mow2.jpg" alt="Map of The Abacos showing Edwin's Boat Yard relative to Treasure Cay, Great Guana Cay, Marsh Harbour, and Hopetown" loading="lazy">
+        <div class="loc-map-img-cap">The Abacos · Edwin's in Context</div>
+      </div>
+    </div>
+
+    <div class="gettinghere">
+      <div class="gettinghere-card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          From the Airport
+        </h3>
+        <ol>
+          <li>Arrive in Marsh Harbour (MHH); clear immigration and customs.</li>
+          <li>Step out to the taxi queue and ask for the Albury dock for Man-O-War Cay.</li>
+          <li>Take the <a href="http://www.alburysferry.com/schedule.html" target="_blank" rel="noopener">Albury's Ferry</a> — the trip takes about 20 minutes.</li>
+          <li>From the Man-O-War ferry dock, the office is a few blocks' walk.</li>
+        </ol>
+      </div>
+      <div class="gettinghere-card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/><path d="M19 14l-1.4-1.4a2 2 0 00-2.8 0L12 15.4 9.2 12.6a2 2 0 00-2.8 0L5 14"/><path d="M12 3v9"/><path d="M8 7l4-4 4 4"/></svg>
+          By Water
+        </h3>
+        <p>Boaters with moorings can arrange to be dropped off at their vessel directly. Office coordinates are <strong>26.596638° N, 77.007582° W</strong> — drop a pin and head in.</p>
+        <p>For ferry schedules and water-taxi service, see <a href="http://www.alburysferry.com/" target="_blank" rel="noopener">Albury's Ferry Service</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ON THE CAY -->
+<section class="cay">
+  <div class="container">
+    <div class="cay-grid">
+      <div>
+        <div class="section-label">The Neighborhood</div>
+        <h2>In the heart of <em>Man-O-War Cay.</em></h2>
+        <p>The yard is in the midst of stores, an ice cream parlor, and a very good restaurant on Man-O-War. House and boat rentals are nearby, and it's a short ferry-and-taxi ride to Marsh Harbour and the airport.</p>
+        <div class="cay-links">
+          <a href="http://www.alburysferry.com/" target="_blank" rel="noopener">Albury's Ferry</a>
+          <a href="http://manowarmarina.com/" target="_blank" rel="noopener">Man-O-War Marina</a>
+          <a href="http://mowmuseum.com" target="_blank" rel="noopener">MOW Heritage Museum</a>
+          <a href="http://www.alburybrothersboats.com/" target="_blank" rel="noopener">Albury Brothers Boats</a>
+          <a href="http://www.waterwaysrentals.com/" target="_blank" rel="noopener">Water Ways Rentals</a>
+          <a href="http://www.conchpearlboatrentals.com/" target="_blank" rel="noopener">Conch Pearl Rentals</a>
+          <a href="http://www.cruisersnet.org/" target="_blank" rel="noopener">Abaco Cruisers Net</a>
+          <a href="http://barometerbob.com/" target="_blank" rel="noopener">Barometer Bob Weather</a>
         </div>
+      </div>
+      <div class="cay-photo">
+        <img src="assets/images/_MG_1954.jpg" alt="Man-O-War Cay boat yard waterfront" loading="lazy">
       </div>
     </div>
   </div>
@@ -693,12 +1145,10 @@ footer {
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="section-label" style="justify-content:center;color:rgba(255,255,255,0.5);">
-    <span style="display:flex;align-items:center;gap:0.8rem;">Get in Touch</span>
-  </div>
+  <div class="section-label"><span>Get in Touch</span></div>
   <h2>Planning a haul-out, or <em>need work done?</em></h2>
   <p>Reach out to discuss scheduling, storage, or short-notice work.</p>
-  <a href="#" class="contact-cta" data-placeholder="contact">
+  <a href="#" class="contact-cta">
     Contact the Yard
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
