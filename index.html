@@ -3,1034 +3,536 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edwin's Boat Yard — Man-O-War Cay, Abacos, Bahamas</title>
+<title>Edwin's Boat Yard — Man-O-War Cay, Bahamas</title>
+<meta name="description" content="A full-service boat yard on Man-O-War Cay, serving power and sail boaters in The Abacos, Bahamas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --deep-navy: #0a1628;
-  --ocean-blue: #0d2847;
-  --teal: #0891b2;
-  --teal-light: #22d3ee;
-  --sand: #f5e6d3;
-  --sand-light: #faf6f1;
+  --navy: #0a1628;
+  --navy-deep: #060e1a;
+  --bone: #f5f1e9;
+  --bone-soft: #faf6ee;
   --white: #ffffff;
   --gold: #d4a853;
-  --gold-light: #f0d48a;
-  --slate: #64748b;
-  --text-dark: #1e293b;
+  --teal: #22d3ee;
+  --slate: #5b6f80;
+  --ink: #1a2942;
+  --rule: rgba(10, 22, 40, 0.1);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  color: var(--text-dark);
-  background: var(--deep-navy);
-  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--bone-soft);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 3rem;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+.nav-logo-icon { width: 46px; height: 46px; flex-shrink: 0; }
+.nav-logo-icon svg { width: 100%; height: 100%; }
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.nav-logo-text em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 0.78em;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  margin-top: 3px;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  padding: 0.55rem 1.3rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 2px;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--navy) !important; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  z-index: 101;
+}
+.nav-toggle span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
 
 /* ── HERO ── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   overflow: hidden;
+  color: var(--white);
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(8, 145, 178, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(212, 168, 83, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, var(--deep-navy) 0%, var(--ocean-blue) 50%, #0c1f3a 100%);
+    linear-gradient(180deg, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.4) 40%, rgba(10,22,40,0.85) 100%),
+    radial-gradient(ellipse at 30% 30%, rgba(34,211,238,0.18) 0%, transparent 60%),
+    linear-gradient(135deg, #0a1628 0%, #143049 50%, #1e4565 100%);
   z-index: 0;
 }
 
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 50%;
-  animation: drift linear infinite;
-}
-
-@keyframes drift {
-  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-10vh) translateX(40px); opacity: 0; }
-}
-
-.hero-water {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.wave {
-  position: absolute;
-  bottom: -10px;
-  left: -5%;
-  width: 110%;
-  height: 80px;
-  background: var(--sand-light);
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  animation: wave 6s ease-in-out infinite;
-}
-
-.wave:nth-child(2) {
-  height: 60px;
-  bottom: -5px;
-  opacity: 0.5;
-  background: rgba(245, 230, 211, 0.4);
-  animation: wave 8s ease-in-out infinite reverse;
-}
-
-.wave:nth-child(3) {
-  height: 40px;
-  bottom: 0;
-  opacity: 0.3;
-  background: rgba(34, 211, 238, 0.15);
-  animation: wave 10s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%, 100% { transform: translateX(0) scaleY(1); }
-  50% { transform: translateX(2%) scaleY(1.2); }
-}
-
-/* Nav */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 1.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.4s ease;
-}
-
-.nav.scrolled {
-  background: rgba(10, 22, 40, 0.95);
-  backdrop-filter: blur(20px);
-  padding: 1rem 3rem;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-}
-
-.nav-logo-icon {
-  width: 48px;
-  height: 48px;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.nav-logo-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.nav-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  line-height: 0.9;
-  text-transform: uppercase;
-}
-
-.nav-logo-text em {
-  display: block;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--gold);
-  font-size: 0.85em;
-  text-transform: lowercase;
-  letter-spacing: 0;
-  margin-top: 2px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-links a::after {
+/* Subtle horizon line */
+.hero-bg::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gold);
-  transition: width 0.3s;
+  bottom: 35%;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,168,83,0.25) 50%, transparent 100%);
 }
 
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-cta {
-  padding: 0.6rem 1.5rem;
-  background: transparent;
-  border: 1.5px solid var(--gold);
-  color: var(--gold) !important;
-  border-radius: 4px;
-  font-size: 0.8rem !important;
-  letter-spacing: 0.1em !important;
-  transition: all 0.3s !important;
-}
-
-.nav-cta:hover {
-  background: var(--gold) !important;
-  color: var(--deep-navy) !important;
-}
-
-.nav-cta::after { display: none !important; }
-
-/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  padding: 0 2rem;
+  padding: 0 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.2rem;
-  background: rgba(212, 168, 83, 0.12);
-  border: 1px solid rgba(212, 168, 83, 0.3);
-  border-radius: 50px;
+.hero-eyebrow {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
+  color: var(--gold);
   margin-bottom: 2rem;
-  animation: fadeUp 1s ease 0.2s both;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--teal-light);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.5); }
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 900;
-  color: var(--white);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
   line-height: 1.05;
-  margin-bottom: 1.5rem;
-  animation: fadeUp 1s ease 0.4s both;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  max-width: 850px;
 }
 
 .hero h1 em {
   font-style: italic;
-  color: var(--teal-light);
-  display: block;
+  font-weight: 400;
+  color: var(--gold);
 }
 
-.hero-sub {
-  font-size: 1.15rem;
-  color: rgba(255,255,255,0.6);
-  font-weight: 300;
-  line-height: 1.7;
-  max-width: 550px;
-  margin: 0 auto 2.5rem;
-  animation: fadeUp 1s ease 0.6s both;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeUp 1s ease 0.8s both;
-}
-
-.btn-primary {
+.hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2.2rem;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--deep-navy);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border-radius: 6px;
-  letter-spacing: 0.05em;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2.2rem;
+  gap: 0.7rem;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.05);
-  border: 1.5px solid rgba(255,255,255,0.2);
-  color: var(--white);
-  font-weight: 500;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border-radius: 6px;
-  letter-spacing: 0.05em;
-  transition: all 0.3s;
   backdrop-filter: blur(10px);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.hero-cta:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
 }
 
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.4);
-  transform: translateY(-2px);
-}
+.hero-cta svg { transition: transform 0.3s; }
+.hero-cta:hover svg { transform: translateX(4px); }
 
-.hero-scroll {
+.hero-meta {
   position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+  bottom: 2.5rem;
+  left: 3rem;
+  right: 3rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(255,255,255,0.3);
-  font-size: 0.7rem;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  animation: fadeUp 1s ease 1.2s both;
+  color: rgba(255,255,255,0.55);
+  z-index: 2;
 }
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.3); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ── STATS BAR ── */
-.stats-bar {
-  background: var(--sand-light);
-  padding: 3rem 2rem;
-  position: relative;
-  z-index: 5;
-}
-
-.stats-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.stat {
-  text-align: center;
-  position: relative;
-}
-
-.stat:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 15%;
-  height: 70%;
-  width: 1px;
-  background: rgba(0,0,0,0.08);
-}
-
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: var(--ocean-blue);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--slate);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
+.hero-meta span::before {
+  content: '·';
+  color: var(--gold);
+  margin-right: 0.5rem;
 }
 
 /* ── SECTIONS ── */
-section { position: relative; }
+section { padding: 7rem 3rem; }
 
-.section-light {
-  background: var(--sand-light);
-  padding: 6rem 2rem;
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+
+/* ── INTRO ── */
+.intro {
+  background: var(--bone-soft);
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.intro-grid h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.intro-grid h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.intro-text p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--slate);
+  margin-bottom: 1.4rem;
+}
+.intro-text p:last-child { margin-bottom: 0; }
+
+/* ── SERVICES ── */
+.services {
+  background: var(--bone);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.svc-head {
+  max-width: 700px;
+  margin-bottom: 4.5rem;
+}
+.svc-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.svc-head h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.svc-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.svc {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.svc:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+.svc:nth-child(odd) { padding-right: 3rem; border-right: 1px solid var(--rule); }
+.svc:nth-child(even) { padding-left: 3rem; }
+
+.svc-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding-top: 0.3rem;
+}
+.svc h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+.svc p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--slate);
+  font-weight: 300;
 }
 
-.section-dark {
-  background: var(--deep-navy);
-  padding: 6rem 2rem;
-  color: var(--white);
+/* ── PHOTO BAND ── */
+.photo-band {
+  height: 60vh;
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
 }
-
-.section-alt {
-  background: var(--white);
-  padding: 6rem 2rem;
+.photo-band-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,22,40,0.4) 0%, rgba(10,22,40,0.7) 100%),
+    radial-gradient(ellipse at 40% 60%, rgba(34,211,238,0.18) 0%, transparent 60%),
+    linear-gradient(135deg, #143049 0%, #0a1628 100%);
 }
-
-.container {
+.photo-band-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  padding: 0 3rem 4rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.section-dark .section-tag { color: var(--gold); }
-
-.section-title {
+.photo-band-content blockquote {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-}
-
-.section-dark .section-title { color: var(--white); }
-
-.section-desc {
-  font-size: 1.05rem;
-  color: var(--slate);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.section-dark .section-desc { color: rgba(255,255,255,0.5); }
-
-/* ── SERVICES ── */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.service-card {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 2.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(0,0,0,0.04);
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--teal), var(--teal-light));
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-.service-card:hover::before { transform: scaleX(1); }
-
-.service-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, rgba(8,145,178,0.08), rgba(34,211,238,0.08));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.service-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--text-dark);
-}
-
-.service-card p {
-  font-size: 0.92rem;
-  color: var(--slate);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-/* ── ABOUT (SPLIT) ── */
-.about-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.about-visual {
-  position: relative;
-  height: 500px;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.about-img-main {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.about-visual-placeholder {
-  width: 100%;
-  height: 100%;
-  background:
-    linear-gradient(135deg, var(--ocean-blue), var(--teal));
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-visual-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 20px,
-      rgba(255,255,255,0.03) 20px,
-      rgba(255,255,255,0.03) 40px
-    );
-}
-
-.about-visual-text {
-  position: relative;
-  z-index: 1;
-  text-align: center;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.4;
   color: var(--white);
+  max-width: 700px;
 }
-
-.about-visual-text .big-icon { font-size: 4rem; margin-bottom: 1rem; }
-.about-visual-text p { font-size: 0.9rem; opacity: 0.7; }
-
-.about-floating-card {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: var(--white);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  z-index: 2;
+.photo-band-content blockquote::before {
+  content: '"'; color: var(--gold);
+  font-size: 1.5em; line-height: 0; vertical-align: -0.4em;
 }
-
-.afc-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-}
-
-.afc-text strong {
-  display: block;
-  font-size: 1.4rem;
-  font-family: 'Playfair Display', serif;
-  color: var(--text-dark);
-}
-
-.afc-text span {
-  font-size: 0.78rem;
-  color: var(--slate);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.about-content .section-tag { text-align: left; }
-
-.about-content .section-title {
-  text-align: left;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-}
-
-.about-text {
-  font-size: 1rem;
-  color: var(--slate);
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  font-weight: 300;
-}
-
-.about-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.about-feature {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-dark);
-}
-
-.about-feature-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--teal);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* ── GALLERY ── */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 280px);
-  gap: 1rem;
-}
-
-.gallery-item {
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-}
-
-.gallery-item:first-child {
-  grid-row: span 2;
-}
-
-.gallery-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.gallery-placeholder::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  transition: background 0.4s;
-}
-
-.gallery-item:hover .gallery-placeholder::after {
-  background: rgba(10,22,40,0.4);
-}
-
-.gp1 { background: linear-gradient(135deg, #1a5276, #0891b2); }
-.gp2 { background: linear-gradient(135deg, #0d2847, #1a5276); }
-.gp3 { background: linear-gradient(135deg, #0891b2, #22d3ee); }
-.gp4 { background: linear-gradient(135deg, #1e3a5f, #0891b2); }
-.gp5 { background: linear-gradient(135deg, #0a1628, #1a5276); }
-
-.gallery-placeholder span {
-  font-size: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.gallery-placeholder p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.6);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  position: relative;
-  z-index: 1;
+.photo-band-content blockquote::after {
+  content: '"'; color: var(--gold);
+  font-size: 1.5em; line-height: 0; vertical-align: -0.4em;
 }
 
 /* ── LOCATION ── */
-.location-wrap {
+.location {
+  background: var(--bone-soft);
+}
+.loc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-
-.location-map {
-  background: linear-gradient(135deg, var(--ocean-blue), #1a5276);
-  min-height: 400px;
-  display: flex;
+  gap: 5rem;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
 }
-
-.location-map::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 60% 40%, rgba(34,211,238,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 30% 70%, rgba(212,168,83,0.1) 0%, transparent 40%);
-}
-
-.map-content {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.map-pin { font-size: 3rem; margin-bottom: 1rem; }
-
-.map-coords {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--teal-light);
-  margin-bottom: 0.5rem;
-}
-
-.map-label {
+.loc-grid h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--white);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 700;
-}
-
-.location-info {
-  background: var(--white);
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.location-info h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 0.5rem;
-}
-
-.location-info .loc-sub {
-  font-size: 0.9rem;
-  color: var(--slate);
-  margin-bottom: 2rem;
-  font-weight: 300;
-}
-
-.loc-detail {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
   margin-bottom: 1.5rem;
 }
-
-.loc-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(8,145,178,0.08);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 1.1rem;
-}
-
-.loc-text strong {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-bottom: 0.2rem;
-}
-
-.loc-text span {
-  font-size: 0.85rem;
+.loc-grid h2 em { font-style: italic; font-weight: 400; color: var(--slate); }
+.loc-grid p {
+  font-size: 1.02rem;
+  line-height: 1.8;
   color: var(--slate);
-  font-weight: 300;
 }
-
-/* ── CTA ── */
-.cta-section {
-  background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--deep-navy) 100%);
-  padding: 6rem 2rem;
-  text-align: center;
+.loc-card {
+  aspect-ratio: 4/3;
+  background:
+    linear-gradient(180deg, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.6) 100%),
+    linear-gradient(135deg, #143049 0%, #0a1628 60%, #1e4565 100%);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: end;
+  padding: 2rem;
+  color: var(--white);
 }
-
-.cta-section::before {
+.loc-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.1) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(212,168,83,0.08) 0%, transparent 50%);
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
 }
-
-.cta-content {
+.loc-card-text {
   position: relative;
   z-index: 1;
 }
-
-.cta-content h2 {
+.loc-card-text strong {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--white);
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.loc-card-text span {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
 }
 
-.cta-content p {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.5);
-  max-width: 500px;
+/* ── CONTACT CTA ── */
+.contact {
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+  padding: 8rem 3rem;
+}
+.contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
+.contact p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 480px;
   margin: 0 auto 2.5rem;
-  font-weight: 300;
   line-height: 1.7;
 }
-
-.cta-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 2rem;
+  background: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.contact-cta:hover {
+  background: var(--white);
+  transform: translateY(-2px);
 }
 
 /* ── FOOTER ── */
-.footer {
-  background: #060e1a;
-  padding: 4rem 2rem 2rem;
-  color: rgba(255,255,255,0.4);
+footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.5);
+  padding: 3.5rem 3rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
-
-.footer-inner {
+.foot-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-brand .nav-logo-text {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.footer-brand p {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  max-width: 280px;
-}
-
-.footer-col h4 {
-  font-family: 'Playfair Display', serif;
-  color: var(--white);
-  font-size: 0.95rem;
-  margin-bottom: 1.2rem;
-  font-weight: 700;
-}
-
-.footer-col ul { list-style: none; }
-
-.footer-col li { margin-bottom: 0.6rem; }
-
-.footer-col a {
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.3s;
-}
-
-.footer-col a:hover { color: var(--gold); }
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
-
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-social a {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.05);
+.foot-brand {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  transition: all 0.3s;
-  font-size: 0.9rem;
+  gap: 0.85rem;
 }
-
-.footer-social a:hover {
-  background: var(--gold);
-  color: var(--deep-navy);
+.foot-brand .nav-logo-icon { width: 36px; height: 36px; }
+.foot-brand .nav-logo-text { font-size: 1.1rem; }
+.foot-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
-
-/* ── MOBILE NAV ── */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 101;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-
-.nav-toggle span {
-  width: 24px;
-  height: 2px;
-  background: var(--white);
-  transition: all 0.3s;
-}
+.foot-meta span:not(:last-child)::after { content: '  ·  '; color: var(--gold); margin: 0 0.5rem; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .about-split { grid-template-columns: 1fr; gap: 2rem; }
-  .about-visual { height: 350px; }
-  .location-wrap { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .nav { padding: 1.2rem 1.5rem; }
+  .nav.scrolled { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
-
   .nav-links.open {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(10,22,40,0.98);
     backdrop-filter: blur(20px);
     align-items: center;
@@ -1038,26 +540,22 @@ section { position: relative; }
     gap: 2rem;
     z-index: 100;
   }
+  .nav-links.open a { font-size: 1.1rem; }
 
-  .nav-links.open a {
-    font-size: 1.2rem;
-    color: var(--white);
-  }
+  section { padding: 5rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem; }
+  .hero-meta { left: 1.5rem; right: 1.5rem; bottom: 1.5rem; flex-direction: column; align-items: start; gap: 0.4rem; }
 
-  .stats-inner { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(2)::after { display: none; }
+  .intro-grid, .loc-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .svc-list { grid-template-columns: 1fr; }
+  .svc { grid-template-columns: 1fr; gap: 0.8rem; padding: 2rem 0; border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  .svc:nth-last-child(-n+2) { border-bottom: none; }
+  .svc:last-child { border-bottom: 1px solid var(--rule); }
 
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 200px);
-  }
-
-  .gallery-item:first-child { grid-row: span 1; }
-
-  .about-features { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .hero-actions { flex-direction: column; align-items: center; }
+  .photo-band-content { padding: 0 1.5rem 2.5rem; }
+  .contact { padding: 5rem 1.5rem; }
+  footer { padding: 2.5rem 1.5rem 1.5rem; }
+  .foot-inner { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -1065,9 +563,9 @@ section { position: relative; }
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">
+  <a href="#" class="nav-logo" aria-label="Edwin's Boat Yard, home">
     <div class="nav-logo-icon">
-      <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="35" cy="35" r="32" stroke="#ffffff" stroke-width="2" fill="none"/>
         <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
         <line x1="35" y1="6" x2="35" y2="14" stroke="#ffffff" stroke-width="1.5"/>
@@ -1085,9 +583,8 @@ section { position: relative; }
   <ul class="nav-links" id="navLinks">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#location">Location</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -1097,327 +594,152 @@ section { position: relative; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Man-O-War Cay &middot; The Abacos &middot; Bahamas
-    </div>
-    <h1>Full-Service<br><em>Boat Yard</em></h1>
-    <p class="hero-sub">Where world-class craftsmanship meets crystal-clear Bahamian waters. Power or sail — we keep you on the water.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Request a Haul-Out
-      </a>
-      <a href="#services" class="btn-secondary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-        View Services
-      </a>
-    </div>
+    <div class="hero-eyebrow">Man-O-War Cay · The Abacos · Bahamas</div>
+    <h1>A full-service boat yard for power and <em>sail boaters.</em></h1>
+    <a href="#contact" class="hero-cta">
+      Get in touch
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-  <div class="hero-water">
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
+  <div class="hero-meta">
+    <span>Power &amp; Sail</span>
+    <span>Edwin's Boat Yard</span>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-num" data-target="40">40+</div>
-      <div class="stat-label">Years in Service</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">500+</div>
-      <div class="stat-label">Boats Serviced Yearly</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Full-Service Facility</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Emergency Support</div>
+<!-- INTRO / ABOUT -->
+<section class="intro" id="about">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <div class="section-label">The Yard</div>
+        <h2>Boaters come back, <em>year after year.</em></h2>
+      </div>
+      <div class="intro-text">
+        <p>Edwin's Boat Yard is a full-service facility on Man-O-War Cay in The Abacos, Bahamas, serving power and sail boaters.</p>
+        <p>Most of our work is repeat business — owners returning season after season. When something needs doing on short notice, we handle it in a timely and efficient manner.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<section class="section-light" id="services">
+<section class="services" id="services">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">What We Do</span>
-      <h2 class="section-title">Expert Marine Services</h2>
-      <p class="section-desc">From routine maintenance to emergency repairs, we deliver Bahamian craftsmanship trusted by boaters worldwide.</p>
+    <div class="svc-head">
+      <div class="section-label">Services</div>
+      <h2>What we do, <em>and how we do it.</em></h2>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">⚓</div>
-        <h3>Haul-Out &amp; Launch</h3>
-        <p>Periodic haul-outs with our marine railway system. Careful handling for power and sail vessels up to 60 feet, with experienced crew on every lift.</p>
+    <div class="svc-list">
+      <div class="svc">
+        <div class="svc-num">i.</div>
+        <div>
+          <h3>Periodic Haul-Outs</h3>
+          <p>Scheduled haul-outs for power and sail boaters maintaining their vessels through the season.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3>Hull &amp; Bottom Work</h3>
-        <p>Complete hull maintenance including pressure washing, sanding, barrier coating, and anti-fouling paint. We restore your hull to peak performance.</p>
+      <div class="svc">
+        <div class="svc-num">ii.</div>
+        <div>
+          <h3>Long-Term Storage</h3>
+          <p>Storage for boaters who keep their vessels with us between seasons or during longer periods away.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🛡️</div>
-        <h3>Long-Term Storage</h3>
-        <p>Secure dry storage on Man-O-War Cay with regular monitoring. Hurricane prep and post-storm inspections included for peace of mind.</p>
+      <div class="svc">
+        <div class="svc-num">iii.</div>
+        <div>
+          <h3>Emergency Repairs</h3>
+          <p>When something needs immediate attention, we step in. Repairs handled with the urgency they require.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Emergency Repairs</h3>
-        <p>When things go wrong on the water, we respond fast. Short-notice work handled with urgency — getting you back underway as quickly as possible.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎨</div>
-        <h3>Fiberglass &amp; Gelcoat</h3>
-        <p>Expert fiberglass repair and gelcoat restoration. From minor dings to major structural work, we bring your vessel back to showroom condition.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <h3>Mechanical Systems</h3>
-        <p>Engine service, prop work, shaft alignment, and through-hull maintenance. We keep the systems beneath the waterline running true.</p>
+      <div class="svc">
+        <div class="svc-num">iv.</div>
+        <div>
+          <h3>Short-Notice Work</h3>
+          <p>Unscheduled jobs, taken on as needed, completed in a timely and efficient manner.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section-alt" id="about">
-  <div class="container">
-    <div class="about-split">
-      <div class="about-visual">
-        <div class="about-visual-placeholder">
-          <div class="about-visual-text">
-            <div class="big-icon">🏗️</div>
-            <p>Boat Yard Facility</p>
-          </div>
-        </div>
-        <div class="about-floating-card">
-          <div class="afc-icon">⭐</div>
-          <div class="afc-text">
-            <strong>Trusted</strong>
-            <span>Generations of Boaters</span>
-          </div>
-        </div>
-      </div>
-      <div class="about-content">
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">Built on Bahamian<br>Boat Building Heritage</h2>
-        <p class="about-text">
-          Edwin's Boat Yard carries forward the proud tradition of Man-O-War Cay — an island legendary for its boat-building craft. We're a full-service facility where repeat customers come back year after year, trusting our team with their most prized possessions.
-        </p>
-        <p class="about-text">
-          Whether you need a scheduled haul-out or an emergency repair at short notice, we handle every job with the same dedication to timely, efficient, quality work that has defined this yard for decades.
-        </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <span class="about-feature-dot"></span>
-            Power &amp; Sail Specialists
-          </div>
-          <div class="about-feature">
-            <span class="about-feature-dot"></span>
-            Marine Railway System
-          </div>
-          <div class="about-feature">
-            <span class="about-feature-dot"></span>
-            Hurricane Preparedness
-          </div>
-          <div class="about-feature">
-            <span class="about-feature-dot"></span>
-            Island Craftsmanship
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary">
-          Learn More
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="section-dark" id="gallery">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">The Yard</span>
-      <h2 class="section-title">See Our Work</h2>
-      <p class="section-desc">From the crystal waters of the Abacos to our workshop floor — every job done right.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <div class="gallery-placeholder gp1"><span>🚤</span><p>Haul-Out in Progress</p></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder gp2"><span>⛵</span><p>Sailboat Restoration</p></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder gp3"><span>🌊</span><p>Man-O-War Harbour</p></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder gp4"><span>🔩</span><p>Hull Maintenance</p></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder gp5"><span>🏝️</span><p>The Abacos</p></div>
-      </div>
-    </div>
+<!-- PHOTO BAND / QUOTE -->
+<section class="photo-band">
+  <div class="photo-band-bg"></div>
+  <div class="photo-band-content">
+    <blockquote>A full-service facility serving power and sail boaters.</blockquote>
   </div>
 </section>
 
 <!-- LOCATION -->
-<section class="section-light" id="location">
+<section class="location" id="location">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Find Us</span>
-      <h2 class="section-title">Paradise With a Purpose</h2>
-      <p class="section-desc">Located in one of the most beautiful cruising grounds in the world.</p>
-    </div>
-    <div class="location-wrap">
-      <div class="location-map">
-        <div class="map-content">
-          <div class="map-pin">📍</div>
-          <div class="map-coords">26.5901° N, 76.9983° W</div>
-          <div class="map-label">Man-O-War Cay</div>
-        </div>
+    <div class="loc-grid">
+      <div>
+        <div class="section-label">Location</div>
+        <h2>On the western shore of <em>Man-O-War Cay.</em></h2>
+        <p>The yard sits on Man-O-War Cay in The Abacos, Bahamas — a small island long associated with traditional boat building.</p>
       </div>
-      <div class="location-info">
-        <h3>Edwin's Boat Yard</h3>
-        <p class="loc-sub">Man-O-War Cay, The Abacos, Bahamas</p>
-        <div class="loc-detail">
-          <div class="loc-icon">📍</div>
-          <div class="loc-text">
-            <strong>Location</strong>
-            <span>Man-O-War Cay, Abaco, Bahamas</span>
-          </div>
-        </div>
-        <div class="loc-detail">
-          <div class="loc-icon">🚢</div>
-          <div class="loc-text">
-            <strong>Access</strong>
-            <span>Ferry from Marsh Harbour, or sail direct into the harbour</span>
-          </div>
-        </div>
-        <div class="loc-detail">
-          <div class="loc-icon">⚓</div>
-          <div class="loc-text">
-            <strong>Facilities</strong>
-            <span>Full-service marine railway, dry storage, workshop</span>
-          </div>
+      <div class="loc-card">
+        <div class="loc-card-text">
+          <strong>Man-O-War Cay</strong>
+          <span>The Abacos · Bahamas</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="cta-content">
-    <h2>Ready to Haul Out?</h2>
-    <p>Whether it's scheduled maintenance or an emergency, reach out and we'll get you taken care of.</p>
-    <div class="cta-actions">
-      <a href="mailto:info@edwinsboatyard.com" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email Us
-      </a>
-      <a href="#location" class="btn-secondary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Find the Yard
-      </a>
-    </div>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label" style="justify-content:center;color:rgba(255,255,255,0.5);">
+    <span style="display:flex;align-items:center;gap:0.8rem;">Get in Touch</span>
   </div>
+  <h2>Planning a haul-out, or <em>need work done?</em></h2>
+  <p>Reach out to discuss scheduling, storage, or short-notice work.</p>
+  <a href="#" class="contact-cta" data-placeholder="contact">
+    Contact the Yard
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="35" cy="35" r="32" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
+          <line x1="35" y1="6" x2="35" y2="14" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="35" y1="56" x2="35" y2="64" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="6" y1="35" x2="14" y2="35" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="56" y1="35" x2="64" y2="35" stroke="#ffffff" stroke-width="1.5"/>
+          <path d="M14 42 Q22 36 28 42 T42 42 T56 42" stroke="#22d3ee" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <line x1="35" y1="18" x2="35" y2="38" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M35 20 L48 36 L35 32 Z" fill="#d4a853" stroke="#ffffff" stroke-width="1"/>
+          <circle cx="35" cy="35" r="2" fill="#ffffff"/>
+        </svg>
+      </div>
       <span class="nav-logo-text">Edwin's<em>boat yard</em></span>
-      <p>A full-service boatyard on Man-O-War Cay, carrying forward the Abacos' proud boat-building tradition since day one.</p>
     </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#services">Haul-Out & Launch</a></li>
-        <li><a href="#services">Hull & Bottom Work</a></li>
-        <li><a href="#services">Long-Term Storage</a></li>
-        <li><a href="#services">Emergency Repairs</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#location">Location</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Visit</h4>
-      <ul>
-        <li><a href="#location">Man-O-War Cay</a></li>
-        <li><a href="#location">The Abacos</a></li>
-        <li><a href="#location">Bahamas</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Edwin's Boat Yard. All rights reserved.</span>
-    <div class="footer-social">
-      <a href="#" title="Facebook">f</a>
-      <a href="#" title="Instagram">ig</a>
-      <a href="#" title="VHF">📻</a>
+    <div class="foot-meta">
+      <span>Man-O-War Cay</span>
+      <span>The Abacos</span>
+      <span>Bahamas</span>
     </div>
   </div>
 </footer>
 
 <script>
-// Particles
-const container = document.getElementById('particles');
-for (let i = 0; i < 30; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.style.left = Math.random() * 100 + '%';
-  p.style.animationDuration = (8 + Math.random() * 15) + 's';
-  p.style.animationDelay = Math.random() * 10 + 's';
-  p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
-  container.appendChild(p);
-}
-
-// Nav scroll
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
 
-// Mobile nav
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; }});
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.service-card, .stat, .gallery-item, .loc-detail').forEach(el => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'all 0.6s ease';
-  observer.observe(el);
-});
 </script>
 </body>
 </html>
