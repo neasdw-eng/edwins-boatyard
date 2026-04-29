@@ -148,9 +148,10 @@ body {
 }
 
 .nav-logo-icon {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   position: relative;
+  flex-shrink: 0;
 }
 
 .nav-logo-icon svg {
@@ -160,14 +161,23 @@ body {
 
 .nav-logo-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 900;
   color: var(--white);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  text-transform: uppercase;
 }
 
-.nav-logo-text span {
+.nav-logo-text em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
   color: var(--gold);
+  font-size: 0.85em;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  margin-top: 2px;
 }
 
 .nav-links {
@@ -1057,14 +1067,20 @@ section { position: relative; }
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
-      <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="21" cy="21" r="20" stroke="#d4a853" stroke-width="1.5" fill="none"/>
-        <path d="M10 28 Q21 8 32 28" stroke="#22d3ee" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <line x1="21" y1="12" x2="21" y2="30" stroke="#d4a853" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M21 12 L30 20 L21 17" fill="rgba(212,168,83,0.3)" stroke="#d4a853" stroke-width="1"/>
+      <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="35" cy="35" r="32" stroke="#ffffff" stroke-width="2" fill="none"/>
+        <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
+        <line x1="35" y1="6" x2="35" y2="14" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="35" y1="56" x2="35" y2="64" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="6" y1="35" x2="14" y2="35" stroke="#ffffff" stroke-width="1.5"/>
+        <line x1="56" y1="35" x2="64" y2="35" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M14 42 Q22 36 28 42 T42 42 T56 42" stroke="#22d3ee" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <line x1="35" y1="18" x2="35" y2="38" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M35 20 L48 36 L35 32 Z" fill="#d4a853" stroke="#ffffff" stroke-width="1"/>
+        <circle cx="35" cy="35" r="2" fill="#ffffff"/>
       </svg>
     </div>
-    <span class="nav-logo-text">Edwin's <span>Boat Yard</span></span>
+    <span class="nav-logo-text">Edwin's<em>boat yard</em></span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#services">Services</a></li>
@@ -1326,7 +1342,7 @@ section { position: relative; }
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="nav-logo-text">Edwin's <span>Boat Yard</span></span>
+      <span class="nav-logo-text">Edwin's<em>boat yard</em></span>
       <p>A full-service boatyard on Man-O-War Cay, carrying forward the Abacos' proud boat-building tradition since day one.</p>
     </div>
     <div class="footer-col">

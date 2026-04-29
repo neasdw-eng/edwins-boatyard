@@ -94,23 +94,27 @@ h1 {
 .logo-01 {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 .logo-01 svg { width: 70px; height: 70px; }
 .logo-01-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #0a1628;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  letter-spacing: 0.18em;
+  line-height: 1.15;
+  text-transform: uppercase;
 }
-.logo-01-text em {
-  font-style: italic;
-  font-weight: 400;
-  color: #d4a853;
+.logo-01-text span {
   display: block;
-  font-size: 0.95em;
+}
+.logo-01-rule {
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: #d4a853;
+  margin: 0.35rem 0;
 }
 
 /* ============= LOGO 02: Circular Emblem ============= */
@@ -227,8 +231,62 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
-.logo-06 svg { width: 68px; height: 68px; margin-bottom: 0.6rem; }
+.logo-06 svg { width: 68px; height: 68px; margin-bottom: 0.8rem; }
 .logo-06-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0a1628;
+  text-align: center;
+  line-height: 1.5;
+}
+.logo-06-name span { display: block; }
+.logo-06-divider {
+  width: 28px; height: 1.5px;
+  background: #d4a853;
+  margin: 0.4rem auto;
+}
+.logo-06-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #5b7682;
+  margin-top: 0.5rem;
+}
+
+/* ===== Original variants for comparison ===== */
+.logo-01-orig {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.logo-01-orig svg { width: 70px; height: 70px; }
+.logo-01-orig-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0a1628;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+.logo-01-orig-text em {
+  font-style: italic;
+  font-weight: 400;
+  color: #d4a853;
+  display: block;
+  font-size: 0.95em;
+}
+
+.logo-06-orig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-06-orig svg { width: 68px; height: 68px; margin-bottom: 0.6rem; }
+.logo-06-orig-name {
   font-family: 'Inter', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
@@ -236,17 +294,72 @@ h1 {
   text-transform: uppercase;
   color: #0a1628;
 }
-.logo-06-divider {
+.logo-06-orig-divider {
   width: 30px; height: 1px;
   background: #d4a853;
   margin: 0.6rem 0 0.5rem;
 }
-.logo-06-tag {
+.logo-06-orig-tag {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   color: #5b7682;
+}
+
+/* Compare grid */
+.compare-section {
+  margin-bottom: 4rem;
+}
+.compare-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #d4a853;
+  display: inline-block;
+}
+.compare-sub {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.compare-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.compare-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.compare-label::before {
+  content: ''; width: 18px; height: 2px; background: #d4a853;
+}
+.compare-stage {
+  height: 180px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border: 1px solid #e7e3d8;
 }
 
 /* Spec rows */
@@ -276,6 +389,102 @@ h1 {
 <h1>Logo Concepts</h1>
 <p class="sub">Six directions across the professional/islandy spectrum. Each logo shown on the background it's tuned for. Pick one (or one element from each) and I'll build out the full system — wordmark, monogram, favicon, social avatars, and stationery.</p>
 
+<div class="compare-section">
+  <div class="compare-title">Side-by-side: Original vs Equal Weight</div>
+  <p class="compare-sub">Comparing the originals (where "Edwin's" dominates) against the new equal-weight versions (where both words sit at the same scale and color).</p>
+
+  <!-- Logo 01 comparison -->
+  <div class="compare-row">
+    <div class="compare-card">
+      <div class="compare-label">01 · Original</div>
+      <div class="compare-stage">
+        <div class="logo-01-orig">
+          <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="32" stroke="#0a1628" stroke-width="2" fill="none"/>
+            <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
+            <line x1="35" y1="6" x2="35" y2="14" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="35" y1="56" x2="35" y2="64" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="6" y1="35" x2="14" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="56" y1="35" x2="64" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+            <path d="M14 42 Q22 36 28 42 T42 42 T56 42" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <line x1="35" y1="18" x2="35" y2="38" stroke="#0a1628" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M35 20 L48 36 L35 32 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1"/>
+            <circle cx="35" cy="35" r="2" fill="#0a1628"/>
+          </svg>
+          <div class="logo-01-orig-text">EDWIN'S<em>boat yard</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-label">01 · Equal Weight</div>
+      <div class="compare-stage">
+        <div class="logo-01">
+          <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="32" stroke="#0a1628" stroke-width="2" fill="none"/>
+            <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
+            <line x1="35" y1="6" x2="35" y2="14" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="35" y1="56" x2="35" y2="64" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="6" y1="35" x2="14" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+            <line x1="56" y1="35" x2="64" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+            <path d="M14 42 Q22 36 28 42 T42 42 T56 42" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <line x1="35" y1="18" x2="35" y2="38" stroke="#0a1628" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M35 20 L48 36 L35 32 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1"/>
+            <circle cx="35" cy="35" r="2" fill="#0a1628"/>
+          </svg>
+          <div class="logo-01-text">
+            <span>Edwin's</span>
+            <span class="logo-01-rule"></span>
+            <span>Boat Yard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo 06 comparison -->
+  <div class="compare-row">
+    <div class="compare-card">
+      <div class="compare-label">06 · Original</div>
+      <div class="compare-stage">
+        <div class="logo-06-orig">
+          <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <line x1="35" y1="14" x2="35" y2="48" stroke="#0a1628" stroke-width="2" stroke-linecap="round"/>
+            <path d="M35 18 L52 46 L35 42 Z" fill="none" stroke="#0a1628" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M35 22 L25 42 L35 40 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="14" y1="54" x2="56" y2="54" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="20" y1="58" x2="50" y2="58" stroke="#0891b2" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <div class="logo-06-orig-name">EDWIN'S</div>
+          <div class="logo-06-orig-divider"></div>
+          <div class="logo-06-orig-tag">Boat Yard · Man-O-War</div>
+        </div>
+      </div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-label">06 · Equal Weight</div>
+      <div class="compare-stage">
+        <div class="logo-06">
+          <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <line x1="35" y1="14" x2="35" y2="48" stroke="#0a1628" stroke-width="2" stroke-linecap="round"/>
+            <path d="M35 18 L52 46 L35 42 Z" fill="none" stroke="#0a1628" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M35 22 L25 42 L35 40 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="14" y1="54" x2="56" y2="54" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="20" y1="58" x2="50" y2="58" stroke="#0891b2" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <div class="logo-06-name">
+            <span>Edwin's</span>
+            <div class="logo-06-divider"></div>
+            <span>Boat Yard</span>
+          </div>
+          <div class="logo-06-tag">Man-O-War Cay · 1976</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="compare-title" style="margin-bottom:2rem;">All Six Concepts</div>
+
 <div class="grid">
 
   <!-- 01: Marine Compass Mark -->
@@ -299,7 +508,11 @@ h1 {
           <!-- Center dot -->
           <circle cx="35" cy="35" r="2" fill="#0a1628"/>
         </svg>
-        <div class="logo-01-text">EDWIN'S<em>boat yard</em></div>
+        <div class="logo-01-text">
+          <span>Edwin's</span>
+          <span class="logo-01-rule"></span>
+          <span>Boat Yard</span>
+        </div>
       </div>
     </div>
     <div class="logo-meta">
@@ -483,9 +696,12 @@ h1 {
           <line x1="14" y1="54" x2="56" y2="54" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round"/>
           <line x1="20" y1="58" x2="50" y2="58" stroke="#0891b2" stroke-width="1" stroke-linecap="round"/>
         </svg>
-        <div class="logo-06-name">EDWIN'S</div>
-        <div class="logo-06-divider"></div>
-        <div class="logo-06-tag">Boat Yard · Man-O-War</div>
+        <div class="logo-06-name">
+          <span>Edwin's</span>
+          <div class="logo-06-divider"></div>
+          <span>Boat Yard</span>
+        </div>
+        <div class="logo-06-tag">Man-O-War Cay · 1976</div>
       </div>
     </div>
     <div class="logo-meta">
