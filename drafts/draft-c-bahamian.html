@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edwin's — Bahamian Bold (Draft C)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --aqua: #00ced1;
+  --aqua-deep: #006d75;
+  --black: #0a0a0f;
+  --gold: #ffd700;
+  --gold-deep: #c9a227;
+  --bone: #f4ede0;
+  --ink: #161821;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  background: var(--bone);
+  color: var(--ink);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sticky tape banner */
+.tape {
+  background: var(--gold);
+  color: var(--black);
+  padding: 0.6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 3px solid var(--black);
+}
+.tape-track {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: tape-scroll 25s linear infinite;
+}
+.tape-track span { padding: 0 1.5rem; }
+.tape-track span::after { content: ' ★ '; margin: 0 0.5rem; }
+@keyframes tape-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+nav {
+  background: var(--black);
+  color: white;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { display: flex; align-items: center; gap: 0.7rem; }
+.logo-svg { width: 46px; height: 46px; }
+.logo-text { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 900; letter-spacing: -0.02em; }
+.logo-text em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: white; text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding: 0.4rem 0;
+}
+.nav-links a:hover { color: var(--aqua); }
+.nav-cta {
+  background: var(--aqua);
+  color: var(--black) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  border: 2px solid var(--aqua);
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--gold); border-color: var(--gold); }
+
+/* HERO — gigantic typography on bone */
+.hero {
+  position: relative;
+  padding: 4rem 2.5rem 5rem;
+  background: var(--bone);
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hero-meta {
+  display: flex; gap: 1rem; align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.hero-meta-tag {
+  background: var(--black); color: var(--gold);
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+}
+.hero-meta-loc { color: var(--aqua-deep); }
+
+.hero h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--black);
+  margin-bottom: 1.8rem;
+}
+.hero h1 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--aqua-deep);
+  display: block;
+  font-size: 0.95em;
+}
+
+.hero-lead {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1.1rem 2rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  border: 2px solid var(--black);
+}
+.btn-1 {
+  background: var(--black); color: var(--gold);
+}
+.btn-1:hover { background: var(--aqua-deep); border-color: var(--aqua-deep); color: white; }
+.btn-2 {
+  background: transparent; color: var(--black);
+}
+.btn-2:hover { background: var(--black); color: var(--gold); }
+
+.hero-link {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 2px solid var(--aqua);
+  padding-bottom: 2px;
+}
+
+/* Hero visual: stacked image cards */
+.hero-vis {
+  position: relative;
+  height: 600px;
+}
+.vis-1 {
+  position: absolute;
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(10,10,15,0.7) 100%),
+    linear-gradient(135deg, var(--aqua-deep) 0%, var(--aqua) 50%, #00ced1 100%);
+  border-radius: 6px;
+  border: 3px solid var(--black);
+  box-shadow: 12px 12px 0 var(--black);
+  display: flex; align-items: flex-end;
+  padding: 2rem;
+  overflow: hidden;
+}
+.vis-1::before {
+  content: '⛵'; position: absolute;
+  top: 30%; left: 50%; transform: translate(-50%,-50%);
+  font-size: 9rem;
+}
+.vis-1-text {
+  position: relative; z-index: 2;
+  color: white;
+}
+.vis-1-text strong {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 2rem;
+  display: block;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.vis-1-text span {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.vis-badge {
+  position: absolute;
+  bottom: -30px; left: -30px;
+  width: 140px; height: 140px;
+  background: var(--gold);
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--black);
+  z-index: 3;
+  box-shadow: 6px 6px 0 var(--black);
+  animation: spin 30s linear infinite;
+}
+.vis-badge span { display: block; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.vis-meta {
+  position: absolute;
+  top: -15px; right: -15px;
+  background: var(--black); color: var(--gold);
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 3;
+  border: 2px solid var(--gold);
+}
+
+/* HUGE TICKER STRIP */
+.ticker {
+  background: var(--aqua-deep);
+  color: white;
+  padding: 1.5rem 0;
+  border-top: 3px solid var(--black);
+  border-bottom: 3px solid var(--black);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+  animation: ticker 20s linear infinite;
+}
+.ticker-track em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.ticker-track span { padding: 0 2rem; }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* SERVICES — bold cards with thick borders */
+.svc-section {
+  padding: 6rem 2.5rem;
+  background: var(--bone);
+}
+.svc-wrap { max-width: 1400px; margin: 0 auto; }
+
+.svc-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: end;
+}
+.svc-head h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--black);
+}
+.svc-head h2 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--aqua-deep);
+}
+.svc-head p { color: var(--ink); font-size: 1rem; line-height: 1.6; max-width: 420px; }
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.svc {
+  background: white;
+  border: 2px solid var(--black);
+  border-radius: 6px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.2s;
+}
+.svc:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--black);
+}
+.svc:nth-child(3n+1):hover { box-shadow: 6px 6px 0 var(--aqua); }
+.svc:nth-child(3n+2):hover { box-shadow: 6px 6px 0 var(--gold); }
+.svc:nth-child(3n+3):hover { box-shadow: 6px 6px 0 var(--aqua-deep); }
+
+.svc-num {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--aqua-deep);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.svc h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+.svc p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* Bold facts strip */
+.facts-strip {
+  background: var(--black);
+  color: white;
+  padding: 5rem 2.5rem;
+  border-top: 3px solid var(--black);
+  border-bottom: 3px solid var(--black);
+}
+.facts-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+}
+.fact {
+  background: var(--black);
+  padding: 2rem;
+  text-align: left;
+}
+.fact strong {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 900;
+  display: block;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.fact span {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+/* CTA */
+.cta {
+  padding: 6rem 2.5rem;
+  text-align: center;
+  background:
+    repeating-linear-gradient(45deg, var(--aqua) 0, var(--aqua) 30px, var(--aqua-deep) 30px, var(--aqua-deep) 60px);
+  position: relative;
+}
+.cta-card {
+  background: var(--bone);
+  border: 3px solid var(--black);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  box-shadow: 12px 12px 0 var(--black);
+}
+.cta h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.cta h2 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--aqua-deep);
+}
+.cta p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.7);
+  padding: 4rem 2.5rem 2rem;
+}
+.foot {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+.foot-brand h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.foot-brand h3 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.foot-brand p { font-size: 0.9rem; line-height: 1.6; max-width: 280px; }
+.foot h4 {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+.foot a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  padding: 0.3rem 0;
+}
+.foot a:hover { color: var(--aqua); }
+.foot-bottom {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-vis { height: 400px; }
+  .svc-head { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .facts-grid { grid-template-columns: 1fr 1fr; }
+  .foot { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .ticker-track { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="tape">
+  <div class="tape-track">
+    <span>Man-O-War Cay</span><span>Est. 1976</span><span>Power &amp; Sail</span><span>The Abacos</span><span>VHF Channel 16</span>
+    <span>Man-O-War Cay</span><span>Est. 1976</span><span>Power &amp; Sail</span><span>The Abacos</span><span>VHF Channel 16</span>
+  </div>
+</div>
+
+<nav>
+  <div class="logo">
+    <svg class="logo-svg" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="46" height="46" rx="6" fill="#00ced1" stroke="#ffd700" stroke-width="2"/>
+      <path d="M10 32 Q25 12 40 32" stroke="#0a0a0f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line x1="25" y1="14" x2="25" y2="36" stroke="#0a0a0f" stroke-width="2"/>
+      <path d="M25 16 L36 25 L25 22" fill="#ffd700" stroke="#0a0a0f" stroke-width="1.5"/>
+    </svg>
+    <div class="logo-text">EDWIN'S<br><em>boat yard</em></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">The Yard</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Haul →</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-meta">
+        <span class="hero-meta-tag">Est. 1976</span>
+        <span class="hero-meta-loc">📍 Man-O-War Cay · Abacos · Bahamas</span>
+      </div>
+      <h1>Bahamian boat yard.<em>Built for boaters.</em></h1>
+      <p class="hero-lead">A full-service marine yard on Man-O-War Cay. Power, sail, hauls, hulls, hurricanes — handled the way the cay has always handled them.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-1">Book a Haul-Out →</a>
+        <a href="#services" class="btn btn-2">What we do</a>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="vis-1">
+        <div class="vis-1-text">
+          <strong>The Abacos</strong>
+          <span>The Cradle of Boat Building</span>
+        </div>
+      </div>
+      <div class="vis-meta">★ Family Run</div>
+      <div class="vis-badge">
+        <div>
+          <span style="font-weight:700;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">Since</span>
+          <span style="font-size:1.6rem;line-height:1;">1976</span>
+          <span style="font-weight:700;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;">Bahamas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>HAULS &amp; <em>launches</em></span>
+    <span>HULL <em>work</em></span>
+    <span>EMERGENCY <em>repairs</em></span>
+    <span>STORAGE &amp; <em>storms</em></span>
+    <span>FIBERGLASS &amp; <em>gelcoat</em></span>
+    <span>HAULS &amp; <em>launches</em></span>
+    <span>HULL <em>work</em></span>
+    <span>EMERGENCY <em>repairs</em></span>
+    <span>STORAGE &amp; <em>storms</em></span>
+    <span>FIBERGLASS &amp; <em>gelcoat</em></span>
+  </div>
+</div>
+
+<section class="svc-section" id="services">
+  <div class="svc-wrap">
+    <div class="svc-head">
+      <h2>What the yard <em>handles.</em></h2>
+      <p>The full marine service stack — done by people who've been doing it since before half our customers were born.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-num">/ 01 /</div>
+        <h3>Haul-Out &amp; Launch</h3>
+        <p>Marine railway up to 60 feet. Power and sail, careful and right.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">/ 02 /</div>
+        <h3>Hull &amp; Bottom</h3>
+        <p>Pressure wash, sand, barrier coat, anti-foul. Smooth and fast.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">/ 03 /</div>
+        <h3>Long-Term Storage</h3>
+        <p>Dry storage with hurricane prep, monitoring, and post-storm reports.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">/ 04 /</div>
+        <h3>Emergency Repairs</h3>
+        <p>VHF or phone — short-notice work, no nonsense, no waiting.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">/ 05 /</div>
+        <h3>Fiberglass &amp; Gelcoat</h3>
+        <p>From dings to structural rebuilds, with a finish you'd be proud to invoice.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">/ 06 /</div>
+        <h3>Mechanical</h3>
+        <p>Engine, prop, shaft, through-hulls. The work below the waterline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts-strip" id="about">
+  <div class="facts-grid">
+    <div class="fact"><strong>40+</strong><span>Years on the cay</span></div>
+    <div class="fact"><strong>500</strong><span>Boats yearly</span></div>
+    <div class="fact"><strong>60ft</strong><span>Max LOA</span></div>
+    <div class="fact"><strong>24/7</strong><span>Emergency line</span></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-card">
+    <h2>Ready to <em>haul out?</em></h2>
+    <p>Drop a line, raise the flag, hail us on 16. Whatever's easiest — we'll get you on the calendar.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a href="mailto:info@edwinsboatyard.com" class="btn btn-1">Email Edwin →</a>
+      <a href="#location" class="btn btn-2">Find the yard</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="foot-brand">
+      <h3>EDWIN'S<br><em>boat yard</em></h3>
+      <p>A full-service yard on Man-O-War Cay. Power, sail, and the work that keeps you on the water.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <a href="#">Man-O-War Cay</a>
+      <a href="#">The Abacos</a>
+      <a href="#">Bahamas</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:info@edwinsboatyard.com">info@edwinsboatyard.com</a>
+      <a href="#">VHF Channel 16</a>
+      <a href="#">+1 (242) 365-XXXX</a>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <a href="#">Mon–Sat 7:30–5</a>
+      <a href="#">Sun by appointment</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Edwin's Boat Yard</span>
+    <span>Made on the cay ★</span>
+  </div>
+</footer>
+
+</body>
+</html>

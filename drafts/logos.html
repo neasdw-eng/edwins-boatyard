@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edwin's Boat Yard — Logo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,900&family=Cormorant+Garamond:wght@700&family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f1ea;
+  color: #1a2942;
+  padding: 3rem 2rem 6rem;
+}
+.wrap { max-width: 1200px; margin: 0 auto; }
+.back {
+  font-size: 0.85rem;
+  color: #64748b;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.back:hover { color: #d4a853; }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.sub { color: #64748b; margin-bottom: 3rem; font-size: 1rem; line-height: 1.6; max-width: 600px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.logo-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+}
+.logo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+
+.logo-stage {
+  height: 220px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stage backgrounds */
+.stage-light { background: #fafafa; border: 1px solid #e7e3d8; }
+.stage-dark { background: #0a1628; }
+.stage-tropical { background: linear-gradient(135deg, #fef3e2 0%, #fde6c4 100%); }
+.stage-bahamian { background: #00ced1; }
+
+.logo-meta {
+  border-top: 1px solid #e7e3d8;
+  padding-top: 1.2rem;
+}
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.logo-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+.logo-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.logo-tag {
+  background: #f5f1ea;
+  color: #5b6f80;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 50px;
+  letter-spacing: 0.04em;
+}
+
+/* ============= LOGO 01: Marine compass mark ============= */
+.logo-01 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.logo-01 svg { width: 70px; height: 70px; }
+.logo-01-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0a1628;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+.logo-01-text em {
+  font-style: italic;
+  font-weight: 400;
+  color: #d4a853;
+  display: block;
+  font-size: 0.95em;
+}
+
+/* ============= LOGO 02: Circular Emblem ============= */
+.logo-02 {
+  width: 200px;
+  height: 200px;
+}
+
+/* ============= LOGO 03: Wave Wordmark ============= */
+.logo-03 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.logo-03-top {
+  font-family: 'Fraunces', serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #fef3e2;
+  line-height: 0.9;
+}
+.logo-03-mid {
+  width: 200px;
+  height: 12px;
+}
+.logo-03-bottom {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #fb7185;
+  font-weight: 700;
+}
+
+/* ============= LOGO 04: Monogram E in roundel ============= */
+.logo-04 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.logo-04-mark {
+  width: 80px; height: 80px;
+  position: relative;
+}
+.logo-04-text {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1a1d24;
+  line-height: 0.95;
+}
+.logo-04-text strong { font-size: 1.6rem; font-weight: 700; display: block; letter-spacing: -0.01em; }
+.logo-04-text em {
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b08d3a;
+  font-weight: 400;
+}
+
+/* ============= LOGO 05: Bold Bahamian Stamp ============= */
+.logo-05 {
+  width: 220px; height: 180px;
+  background: #ffd700;
+  border: 3px solid #0a0a0f;
+  border-radius: 6px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 6px 6px 0 #0a0a0f;
+  transform: rotate(-2deg);
+}
+.logo-05-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.logo-05-mid {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+.logo-05-mid em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #006d75;
+  display: block;
+}
+.logo-05-bot {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============= LOGO 06: Modern minimal lockup ============= */
+.logo-06 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-06 svg { width: 68px; height: 68px; margin-bottom: 0.6rem; }
+.logo-06-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0a1628;
+}
+.logo-06-divider {
+  width: 30px; height: 1px;
+  background: #d4a853;
+  margin: 0.6rem 0 0.5rem;
+}
+.logo-06-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: #5b7682;
+}
+
+/* Spec rows */
+.spec {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+.swatch {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: inline-block;
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← All explorations</a>
+<h1>Logo Concepts</h1>
+<p class="sub">Six directions across the professional/islandy spectrum. Each logo shown on the background it's tuned for. Pick one (or one element from each) and I'll build out the full system — wordmark, monogram, favicon, social avatars, and stationery.</p>
+
+<div class="grid">
+
+  <!-- 01: Marine Compass Mark -->
+  <div class="logo-card">
+    <div class="logo-stage stage-light">
+      <div class="logo-01">
+        <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="35" r="32" stroke="#0a1628" stroke-width="2" fill="none"/>
+          <circle cx="35" cy="35" r="26" stroke="#d4a853" stroke-width="1" fill="none"/>
+          <!-- Compass cardinals -->
+          <line x1="35" y1="6" x2="35" y2="14" stroke="#0a1628" stroke-width="1.5"/>
+          <line x1="35" y1="56" x2="35" y2="64" stroke="#0a1628" stroke-width="1.5"/>
+          <line x1="6" y1="35" x2="14" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+          <line x1="56" y1="35" x2="64" y2="35" stroke="#0a1628" stroke-width="1.5"/>
+          <!-- Wave -->
+          <path d="M14 42 Q22 36 28 42 T42 42 T56 42" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Mast -->
+          <line x1="35" y1="18" x2="35" y2="38" stroke="#0a1628" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Sail -->
+          <path d="M35 20 L48 36 L35 32 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1"/>
+          <!-- Center dot -->
+          <circle cx="35" cy="35" r="2" fill="#0a1628"/>
+        </svg>
+        <div class="logo-01-text">EDWIN'S<em>boat yard</em></div>
+      </div>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">01 · Marine Compass</div>
+      <div class="logo-desc">Compass + sail + wave inside a precision roundel. Reads as a chart symbol — quiet authority, ages well, prints down to a quarter inch.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Professional</span>
+        <span class="logo-tag">Heritage</span>
+        <span class="logo-tag">Versatile</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#0a1628"></span> Navy
+        <span class="swatch" style="background:#d4a853"></span> Brass
+        <span class="swatch" style="background:#0891b2"></span> Teal
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Circular Emblem -->
+  <div class="logo-card">
+    <div class="logo-stage stage-dark">
+      <svg class="logo-02" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="100" cy="100" r="92" stroke="#d4a853" stroke-width="2" fill="none"/>
+        <circle cx="100" cy="100" r="86" stroke="#d4a853" stroke-width="0.5" fill="none"/>
+        <!-- Curved text top -->
+        <defs>
+          <path id="topArc" d="M 30 100 A 70 70 0 0 1 170 100" />
+          <path id="botArc" d="M 30 100 A 70 70 0 0 0 170 100" />
+        </defs>
+        <text font-family="Playfair Display, serif" font-size="13" font-weight="700" fill="#d4a853" letter-spacing="3">
+          <textPath href="#topArc" startOffset="50%" text-anchor="middle">EDWIN'S BOAT YARD</textPath>
+        </text>
+        <text font-family="Playfair Display, serif" font-size="9" font-weight="400" fill="#d4a853" letter-spacing="3" font-style="italic">
+          <textPath href="#botArc" startOffset="50%" text-anchor="middle">MAN-O-WAR CAY · BAHAMAS · 1976</textPath>
+        </text>
+        <!-- Center: anchor & sailboat -->
+        <line x1="100" y1="55" x2="100" y2="115" stroke="#fef3e2" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="85" y1="65" x2="115" y2="65" stroke="#fef3e2" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M75 105 Q100 130 125 105" stroke="#fef3e2" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M75 105 Q70 100 67 95" stroke="#fef3e2" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M125 105 Q130 100 133 95" stroke="#fef3e2" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Stars -->
+        <text x="42" y="105" font-size="14" fill="#d4a853">★</text>
+        <text x="148" y="105" font-size="14" fill="#d4a853">★</text>
+      </svg>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">02 · Maritime Seal</div>
+      <div class="logo-desc">A traditional yacht-club seal — anchor, sail, two stars, and curved type. Looks great on a window decal, a polo, or a brass plaque.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Heritage</span>
+        <span class="logo-tag">Yacht Club</span>
+        <span class="logo-tag">Embroiderable</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#0a1628"></span> Navy
+        <span class="swatch" style="background:#d4a853"></span> Brass
+        <span class="swatch" style="background:#fef3e2"></span> Bone
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Tropical Wave Wordmark -->
+  <div class="logo-card">
+    <div class="logo-stage stage-tropical">
+      <div class="logo-03">
+        <svg width="220" height="50" viewBox="0 0 220 50" xmlns="http://www.w3.org/2000/svg">
+          <text x="110" y="40" text-anchor="middle"
+                font-family="Fraunces, serif" font-size="44" font-weight="900" fill="#0e7490" letter-spacing="-2">
+            EDWIN'S
+          </text>
+        </svg>
+        <svg class="logo-03-mid" viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 6 Q15 0 30 6 T60 6 T90 6 T120 6 T150 6 T180 6 T200 6"
+                stroke="#06b6d4" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-03-bottom">· Boat Yard · 1976 ·</div>
+      </div>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">03 · Tropical Wave</div>
+      <div class="logo-desc">Big editorial wordmark with a hand-drawn wave divider. Pairs with Draft A. Feels like a vacation, not a corporation.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Tropical</span>
+        <span class="logo-tag">Editorial</span>
+        <span class="logo-tag">Warm</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#0e7490"></span> Deep Teal
+        <span class="swatch" style="background:#06b6d4"></span> Aqua
+        <span class="swatch" style="background:#fb7185"></span> Coral
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: Monogram E -->
+  <div class="logo-card">
+    <div class="logo-stage stage-light">
+      <div class="logo-04">
+        <svg class="logo-04-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Roundel -->
+          <circle cx="40" cy="40" r="38" stroke="#1a1d24" stroke-width="1.5" fill="none"/>
+          <circle cx="40" cy="40" r="33" fill="#f7f1e7"/>
+          <circle cx="40" cy="40" r="33" stroke="#b08d3a" stroke-width="0.8" fill="none"/>
+          <!-- Monogram E -->
+          <text x="40" y="56" text-anchor="middle"
+                font-family="Cormorant Garamond, serif" font-size="56" font-weight="700"
+                fill="#1a1d24" font-style="italic">
+            E
+          </text>
+          <!-- Tiny anchors -->
+          <circle cx="20" cy="40" r="1.5" fill="#b08d3a"/>
+          <circle cx="60" cy="40" r="1.5" fill="#b08d3a"/>
+        </svg>
+        <div class="logo-04-text">
+          <strong>Edwin's</strong>
+          <em>Boat Yard · Est. 1976</em>
+        </div>
+      </div>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">04 · Editorial Monogram</div>
+      <div class="logo-desc">Italic E in a roundel — bookplate energy. Pairs with Draft B. Ultra-flexible: works as a favicon, social avatar, embossed seal, or signage.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Refined</span>
+        <span class="logo-tag">Monogram</span>
+        <span class="logo-tag">Quiet Luxury</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#1a1d24"></span> Ink
+        <span class="swatch" style="background:#b08d3a"></span> Brass
+        <span class="swatch" style="background:#f7f1e7"></span> Paper
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Bahamian Stamp -->
+  <div class="logo-card">
+    <div class="logo-stage stage-bahamian">
+      <div class="logo-05">
+        <div class="logo-05-top">
+          <span>Est. 1976</span>
+          <span>★</span>
+        </div>
+        <div class="logo-05-mid">
+          EDWIN'S<em>boat yard</em>
+        </div>
+        <div class="logo-05-bot">
+          <span>Man-O-War</span>
+          <span>Bahamas</span>
+        </div>
+      </div>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">05 · Bahamian Stamp</div>
+      <div class="logo-desc">A wedge of unapologetic local pride. Pairs with Draft C. The kind of logo that looks great on a hat or hand-painted on a hull.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Bold</span>
+        <span class="logo-tag">Bahamian</span>
+        <span class="logo-tag">Merch-ready</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#ffd700"></span> Gold
+        <span class="swatch" style="background:#0a0a0f"></span> Black
+        <span class="swatch" style="background:#006d75"></span> Aqua
+      </div>
+    </div>
+  </div>
+
+  <!-- 06: Modern Minimal -->
+  <div class="logo-card">
+    <div class="logo-stage stage-light">
+      <div class="logo-06">
+        <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pure-line sailboat -->
+          <line x1="35" y1="14" x2="35" y2="48" stroke="#0a1628" stroke-width="2" stroke-linecap="round"/>
+          <path d="M35 18 L52 46 L35 42 Z" fill="none" stroke="#0a1628" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M35 22 L25 42 L35 40 Z" fill="#d4a853" stroke="#0a1628" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Water lines -->
+          <line x1="14" y1="54" x2="56" y2="54" stroke="#0a1628" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="20" y1="58" x2="50" y2="58" stroke="#0891b2" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-06-name">EDWIN'S</div>
+        <div class="logo-06-divider"></div>
+        <div class="logo-06-tag">Boat Yard · Man-O-War</div>
+      </div>
+    </div>
+    <div class="logo-meta">
+      <div class="logo-name">06 · Modern Minimal</div>
+      <div class="logo-desc">A pared-back vertical lockup. Single-line sailboat, sans wordmark, italic descriptor. Dead simple, infinitely usable.</div>
+      <div class="logo-tags">
+        <span class="logo-tag">Minimal</span>
+        <span class="logo-tag">Modern</span>
+        <span class="logo-tag">Scalable</span>
+      </div>
+      <div class="spec">
+        <span class="swatch" style="background:#0a1628"></span> Navy
+        <span class="swatch" style="background:#d4a853"></span> Brass
+        <span class="swatch" style="background:#0891b2"></span> Teal
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

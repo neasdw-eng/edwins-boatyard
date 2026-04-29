@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edwin's Boat Yard — Design Drafts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background: #f5f1ea; padding: 3rem 2rem; color: #1a2942; }
+.wrap { max-width: 1100px; margin: 0 auto; }
+h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.sub { color: #64748b; margin-bottom: 3rem; font-size: 1rem; }
+h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 2.5rem 0 1.2rem; padding-bottom: 0.6rem; border-bottom: 2px solid #d4a853; display: inline-block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.card { background: #fff; border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s; display: block; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+.card-preview { height: 180px; border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Playfair Display', serif; font-size: 1.4rem; position: relative; overflow: hidden; }
+.card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.3rem; }
+.card p { font-size: 0.85rem; color: #64748b; line-height: 1.5; }
+.tag { display:inline-block; padding: 2px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.5rem; }
+.tag-a { background: #fef3c7; color: #92400e; }
+.tag-b { background: #dbeafe; color: #1e40af; }
+.tag-c { background: #fce7f3; color: #9f1239; }
+.tag-logo { background: #d1fae5; color: #065f46; }
+
+.preview-a { background: linear-gradient(135deg, #06b6d4 0%, #f59e0b 100%); }
+.preview-b { background: linear-gradient(135deg, #1e293b 0%, #475569 50%, #d4a853 100%); }
+.preview-c { background: linear-gradient(135deg, #00ced1 0%, #1a1a2e 50%, #ffd700 100%); }
+.preview-logos { background: linear-gradient(135deg, #0891b2 0%, #0d2847 100%); }
+.preview-orig { background: linear-gradient(135deg, #0a1628 0%, #0891b2 100%); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Edwin's Boat Yard — Design Explorations</h1>
+<p class="sub">Three directions exploring the professional + islandy intersection, plus logo concepts.</p>
+
+<h2>UI Direction Drafts</h2>
+<div class="grid">
+
+  <a class="card" href="../index.html">
+    <div class="card-preview preview-orig">v1 Original</div>
+    <h3>Draft 0 — Classic Marine</h3>
+    <p>The original deep-navy + gold direction. Polished but more traditional yacht-club feel.</p>
+    <span class="tag tag-a">Live</span>
+  </a>
+
+  <a class="card" href="draft-a-tropical.html">
+    <div class="card-preview preview-a">A &nbsp; Tropical Lux</div>
+    <h3>Draft A — Tropical Luxury</h3>
+    <p>Turquoise, coral, and warm sand. Bright, airy, vacation-resort energy. Feels like the Bahamas the moment you land.</p>
+    <span class="tag tag-a">Bright &amp; Warm</span>
+  </a>
+
+  <a class="card" href="draft-b-editorial.html">
+    <div class="card-preview preview-b">B &nbsp; Editorial</div>
+    <h3>Draft B — Editorial Yacht</h3>
+    <p>Cream paper, deep slate, and brass accents. Magazine-style typography. The "Yachting World" cover-story aesthetic.</p>
+    <span class="tag tag-b">Refined &amp; Quiet</span>
+  </a>
+
+  <a class="card" href="draft-c-bahamian.html">
+    <div class="card-preview preview-c">C &nbsp; Bahamian</div>
+    <h3>Draft C — Bahamian Bold</h3>
+    <p>Bahamian flag palette: aqua, black, gold. Bold local pride, modern editorial layout. Confident and unapologetically island.</p>
+    <span class="tag tag-c">Bold &amp; Local</span>
+  </a>
+
+  <a class="card" href="logos.html">
+    <div class="card-preview preview-logos">⚓ &nbsp; Logo Concepts</div>
+    <h3>Logo Explorations</h3>
+    <p>Six logo directions — wordmarks, monograms, and emblem styles. Pick a direction and I'll refine.</p>
+    <span class="tag tag-logo">6 concepts</span>
+  </a>
+
+</div>
+</div>
+</body>
+</html>

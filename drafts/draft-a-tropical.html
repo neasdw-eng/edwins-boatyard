@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edwin's — Tropical Luxury (Draft A)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --turq: #06b6d4;
+  --turq-deep: #0e7490;
+  --coral: #fb7185;
+  --coral-soft: #fda4af;
+  --sand: #fef3e2;
+  --sand-warm: #fde6c4;
+  --cream: #fffaf3;
+  --ink: #1a3a47;
+  --slate: #5b7682;
+  --sun: #fbbf24;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; }
+
+/* Top bar */
+.topbar {
+  background: var(--turq-deep);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.05em;
+}
+.topbar span { display: inline-flex; align-items: center; gap: 0.5rem; }
+
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--cream);
+  padding: 1.2rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.logo { display: flex; align-items: center; gap: 0.7rem; }
+.logo-mark {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--turq), var(--turq-deep));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(6,182,212,0.3);
+}
+.logo-text { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; }
+.logo-text em { color: var(--coral); font-style: italic; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+.nav-cta { background: var(--coral); color: white !important; padding: 0.6rem 1.4rem; border-radius: 50px; transition: all 0.3s; }
+.nav-cta:hover { background: var(--ink); transform: translateY(-2px); }
+
+/* Hero — full bleed, asymmetric */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #fef3e2 0%, #fde6c4 50%, #fed7aa 100%);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  padding: 0 4rem;
+  gap: 3rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(251,113,133,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-text { position: relative; z-index: 2; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--turq-deep);
+  margin-bottom: 1.5rem;
+}
+.eyebrow::before {
+  content: ''; width: 30px; height: 2px; background: var(--coral);
+}
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--turq-deep);
+  display: block;
+}
+.lead {
+  font-size: 1.15rem; line-height: 1.6; color: var(--slate);
+  max-width: 480px; margin-bottom: 2.5rem; font-weight: 300;
+}
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600; font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-1 { background: var(--ink); color: white; }
+.btn-1:hover { background: var(--turq-deep); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(14,116,144,0.3); }
+.btn-2 { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.btn-2:hover { background: var(--ink); color: white; }
+
+/* Hero visual — postcard collage */
+.hero-visual {
+  position: relative;
+  height: 540px;
+}
+.postcard {
+  position: absolute;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(26,58,71,0.25);
+  border: 6px solid white;
+}
+.pc1 {
+  width: 280px; height: 360px;
+  top: 30px; left: 0;
+  background: linear-gradient(180deg, var(--turq) 0%, var(--turq-deep) 100%);
+  transform: rotate(-6deg);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 1.5rem;
+  color: white;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.pc1::before {
+  content: '⛵'; position: absolute; top: 30%; left: 50%; transform: translate(-50%,-50%); font-size: 5rem;
+}
+.pc2 {
+  width: 240px; height: 300px;
+  top: 60px; right: 20px;
+  background: linear-gradient(180deg, var(--coral-soft) 0%, var(--coral) 100%);
+  transform: rotate(8deg);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 1.5rem;
+  color: white;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+.pc2::before {
+  content: '🌴'; position: absolute; top: 35%; left: 50%; transform: translate(-50%,-50%); font-size: 4rem;
+}
+.pc3 {
+  width: 200px; height: 200px;
+  bottom: 40px; left: 130px;
+  background: linear-gradient(135deg, var(--sun) 0%, #f59e0b 100%);
+  transform: rotate(-3deg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+.stamp {
+  position: absolute; top: 80px; right: 70px;
+  width: 90px; height: 90px;
+  background: var(--coral); color: white;
+  border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(15deg);
+  box-shadow: 0 10px 25px rgba(251,113,133,0.4);
+  z-index: 3;
+  border: 3px dashed rgba(255,255,255,0.5);
+}
+.stamp strong { font-size: 1.3rem; display: block; margin: 2px 0; }
+
+/* Marquee */
+.marquee {
+  background: var(--ink);
+  color: var(--sand-warm);
+  padding: 1.2rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+.marquee-track span { padding: 0 2rem; }
+.marquee-track span::after { content: '✦'; color: var(--coral); margin-left: 4rem; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Services */
+.services { padding: 7rem 2rem; background: var(--cream); }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.section-head h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.section-head h2 em { font-style: italic; color: var(--turq-deep); font-weight: 400; }
+.section-head p { color: var(--slate); font-size: 1.05rem; line-height: 1.6; }
+
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.svc {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s;
+}
+.svc:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(14,116,144,0.1); }
+.svc-num {
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.svc-icon {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--sand-warm), var(--sand));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+.svc h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.svc p { font-size: 0.92rem; line-height: 1.6; color: var(--slate); font-weight: 300; }
+
+/* Highlight strip */
+.highlight {
+  margin: 0 2rem;
+  background: linear-gradient(135deg, var(--turq), var(--turq-deep));
+  border-radius: 30px;
+  padding: 5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.highlight::before {
+  content: ''; position: absolute; top: -50%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  border-radius: 50%;
+}
+.highlight h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.highlight h2 em { font-style: italic; color: var(--sand); font-weight: 400; }
+.highlight p { font-size: 1.05rem; opacity: 0.85; line-height: 1.7; margin-bottom: 2rem; max-width: 420px; }
+.highlight .btn-1 { background: var(--coral); }
+.highlight .btn-1:hover { background: white; color: var(--turq-deep); }
+.highlight-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.h-stat { padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+.h-stat strong { font-family: 'Fraunces', serif; font-size: 2.4rem; font-weight: 900; display: block; line-height: 1; }
+.h-stat span { font-size: 0.85rem; opacity: 0.8; }
+
+/* Footer */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.6);
+  padding: 4rem 2rem 2rem;
+  margin-top: 6rem;
+}
+.foot { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+.foot h4 { color: white; font-family: 'Fraunces', serif; margin-bottom: 1rem; }
+.foot a { color: rgba(255,255,255,0.6); text-decoration: none; display: block; padding: 0.3rem 0; font-size: 0.9rem; }
+.foot a:hover { color: var(--coral); }
+.foot p { font-size: 0.9rem; line-height: 1.6; margin-top: 1rem; }
+.foot-bottom { max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; text-align: center; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding: 3rem 2rem; min-height: auto; }
+  .hero-visual { height: 400px; max-width: 500px; margin: 0 auto; }
+  .highlight { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .foot { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .pc1 { width: 200px; height: 260px; }
+  .pc2 { width: 180px; height: 220px; }
+  .pc3 { width: 150px; height: 150px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 Man-O-War Cay, The Abacos · Bahamas</span>
+  <span>🌅 Open · Mon–Sat · 7:30am–5pm</span>
+</div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">E</div>
+    <div class="logo-text">Edwin's <em>Boat Yard</em></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Haul-Out</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">A Bahamian Boat Yard Since '76</div>
+    <h1>Where the trade winds<em>meet your hull.</em></h1>
+    <p class="lead">A full-service yard on Man-O-War Cay — built by hand, run by family, trusted by sailors who've been coming back for forty years.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-1">Reserve Your Slip →</a>
+      <a href="#services" class="btn btn-2">What We Do</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="postcard pc1"><span>The Abacos</span></div>
+    <div class="postcard pc2"><span>Island Time</span></div>
+    <div class="postcard pc3">⚓</div>
+    <div class="stamp">Est<strong>1976</strong>Bahamas</div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Haul-Outs</span><span>Storage</span><span>Hull Work</span><span>Emergency Repairs</span><span>Fiberglass</span><span>Mechanical</span>
+    <span>Haul-Outs</span><span>Storage</span><span>Hull Work</span><span>Emergency Repairs</span><span>Fiberglass</span><span>Mechanical</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <h2>The yard <em>handles it all.</em></h2>
+      <p>Forty years of muscle memory and Bahamian know-how. From the marine railway to the workshop floor, we've seen it before.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-num">— 01</div>
+        <div class="svc-icon">⚓</div>
+        <h3>Haul-Out & Launch</h3>
+        <p>Marine railway built for power and sail up to 60 ft. We move slow, careful, and right.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">— 02</div>
+        <div class="svc-icon">🛠</div>
+        <h3>Hull & Bottom</h3>
+        <p>Pressure wash, sand, barrier coat, anti-foul. Brought back to a clean, fast finish.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">— 03</div>
+        <div class="svc-icon">🏝</div>
+        <h3>Long-Term Storage</h3>
+        <p>Dry storage with hurricane prep, regular checks, and post-storm reports. Sleep easy.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">— 04</div>
+        <div class="svc-icon">⚡</div>
+        <h3>Emergency Repairs</h3>
+        <p>VHF or phone — we'll be there. Short-notice work handled fast, no nonsense.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">— 05</div>
+        <div class="svc-icon">✨</div>
+        <h3>Fiberglass & Gelcoat</h3>
+        <p>From dings to structural work. Old-school craft, modern materials, museum-quality finish.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">— 06</div>
+        <div class="svc-icon">⚙️</div>
+        <h3>Mechanical</h3>
+        <p>Engine service, prop work, shaft alignment, through-hulls. The unglamorous, essential things.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="highlight" id="about">
+  <div>
+    <h2>Built on Man-O-War <em>boat-building blood.</em></h2>
+    <p>This island made boats for two centuries before we hung the sign. We carry that craft forward — every haul, every patch, every launch.</p>
+    <a href="#contact" class="btn btn-1">Talk to Edwin →</a>
+  </div>
+  <div class="highlight-stats">
+    <div class="h-stat"><strong>40+</strong><span>Years on the cay</span></div>
+    <div class="h-stat"><strong>500+</strong><span>Boats yearly</span></div>
+    <div class="h-stat"><strong>60ft</strong><span>Max LOA</span></div>
+    <div class="h-stat"><strong>24/7</strong><span>Emergency line</span></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="foot">
+    <div>
+      <div class="logo"><div class="logo-mark">E</div><div class="logo-text" style="color:white">Edwin's <em>Boat Yard</em></div></div>
+      <p>A full-service yard on Man-O-War Cay. Power, sail, and everything in between.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <a href="#">Man-O-War Cay</a>
+      <a href="#">The Abacos</a>
+      <a href="#">Bahamas</a>
+    </div>
+    <div>
+      <h4>Reach Out</h4>
+      <a href="mailto:info@edwinsboatyard.com">info@edwinsboatyard.com</a>
+      <a href="#">VHF Channel 16</a>
+      <a href="#">+1 (242) 365-XXXX</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Edwin's Boat Yard · Made on the cay</div>
+</footer>
+
+</body>
+</html>
